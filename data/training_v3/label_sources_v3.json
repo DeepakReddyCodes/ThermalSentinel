@@ -1,0 +1,70 @@
+{
+  "catalog_version": "v3.0.0",
+  "generated_at": "2026-09-10T17:55:00.000Z",
+  "audit_phase": "Phase 5D \u2014 Wildfire / Vegetation-Burn Data Acquisition & Cross-Domain Validation",
+  "sources": [
+    {
+      "source_id": "SRC-US-NIFC-WFIGS-2022",
+      "name": "WFIGS Interagency Fire Perimeters (IRWIN)",
+      "provider": "National Interagency Fire Center (NIFC) / Wildland Fire Interagency Geospatial Services",
+      "official_endpoint": "https://services3.arcgis.com/T4QMspbfLg3qTGWY/arcgis/rest/services/WFIGS_Interagency_Perimeters/FeatureServer/0",
+      "dataset_type": "Authoritative Multi-Agency Wildland Fire Incident Perimeters",
+      "target_classes_supported": [
+        "WILDFIRE_CONFIRMED",
+        "VEGETATION_BURN"
+      ],
+      "credibility_tier": "TIER_1",
+      "independence_status": "TRULY_INDEPENDENT_GROUND_TRUTH",
+      "circularity_audit": "PASSED: Perimeters are mapped by certified wildland fire incident teams using airborne infrared line-scanners (NIROPS), GPS boundary walks, and ICS-209 dispatch logs. 100% independent of satellite active-fire detection algorithms.",
+      "access_verification": "HTTP 200 via ArcGIS FeatureServer REST API; GeoJSON polygon rings returned with sub-hour polygon mapping timestamps.",
+      "temporal_semantics": "Contains attr_FireDiscoveryDateTime (ignition), poly_PolygonDateTime (airborne mapping run timestamp), and attr_ContainmentDateTime.",
+      "usable_records_in_v3": 1285
+    },
+    {
+      "source_id": "SRC-EOG-FLARE-2024",
+      "name": "EOG Global Gas Flaring Catalog (v2.1)",
+      "provider": "Earth Observation Group, Payne Institute, Colorado School of Mines / World Bank GFMR",
+      "official_endpoint": "https://eogdata.mines.edu/download_global_flare.html",
+      "dataset_type": "Persistent Industrial Gas Flaring Stack Centroids",
+      "target_classes_supported": [
+        "GAS_FLARE"
+      ],
+      "credibility_tier": "TIER_2",
+      "independence_status": "INDEPENDENT_PHYSICAL_SPECTRAL_PRODUCT",
+      "circularity_audit": "PASSED: Utilizes nighttime M-band dual-Planck blackbody curve fitting (T >= 1600 K), physically distinct from 375m I-band active fire thresholding.",
+      "usable_records_in_v3": 155
+    },
+    {
+      "source_id": "SRC-NASA-FIRMS-VIIRS-ARCHIVE",
+      "name": "NASA FIRMS VIIRS Active Fire Archive (NOAA-20 & Suomi-NPP)",
+      "provider": "NASA LANCE / FIRMS (EOSDIS)",
+      "official_endpoint": "https://firms.modaps.eosdis.nasa.gov/api/area/csv/",
+      "dataset_type": "375m I-Band Thermal Telemetry (VNP14IMGTDL / VJ114IMGTDL Standard Processing)",
+      "credibility_tier": "OBSERVATIONAL_TELEMETRY",
+      "role": "Source of thermal radiant flux and sensor geometry features; requires independent labels.",
+      "raw_records_in_v3": 1631
+    },
+    {
+      "source_id": "SRC-NASA-MCD64A1",
+      "name": "NASA MODIS MCD64A1 / VIIRS VNP64A1 Burned Area Product",
+      "provider": "NASA LP DAAC / USGS EROS / University of Maryland",
+      "official_endpoint": "https://lpdaac.usgs.gov/products/mcd64a1v061/",
+      "dataset_type": "500m / 375m Surface Reflectance Change Scars",
+      "target_classes_supported": [
+        "VEGETATION_BURN"
+      ],
+      "credibility_tier": "TIER_2",
+      "independence_status": "INDEPENDENT_CORROBORATION_ONLY",
+      "circularity_audit": "PASSED CORROBORATION: Measures radiometric surface reflectance drops. Proves vegetative biomass combustion, but cannot determine whether the burn was an emergency wildfire, agricultural stubble clearance, or prescribed fuel management."
+    },
+    {
+      "source_id": "SRC-CANADA-CNFDB",
+      "name": "Canadian National Fire Database (CNFDB)",
+      "provider": "Canadian Forest Service, Natural Resources Canada / CWFIS",
+      "official_endpoint": "https://cwfis.cfs.nrcan.gc.ca/ha/nfdb",
+      "dataset_type": "Agency-Reported Wildland Fire Perimeters",
+      "credibility_tier": "TIER_1",
+      "access_verification": "Direct static ZIP endpoints returned 404 in programmatic HEAD queries; dataset is currently gated behind versioned CWFIS Datamart subdirectories requiring interactive browsing."
+    }
+  ]
+}

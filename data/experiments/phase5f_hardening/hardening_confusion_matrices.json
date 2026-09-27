@@ -1,0 +1,212 @@
+{
+  "ablation_A_lr_test_obs": [
+    [
+      30,
+      1
+    ],
+    [
+      113,
+      721
+    ]
+  ],
+  "ablation_A_lr_test_evt": [
+    [
+      19,
+      1
+    ],
+    [
+      0,
+      4
+    ]
+  ],
+  "ablation_A_dt_test_obs": [
+    [
+      29,
+      2
+    ],
+    [
+      145,
+      689
+    ]
+  ],
+  "ablation_A_dt_test_evt": [
+    [
+      19,
+      1
+    ],
+    [
+      0,
+      4
+    ]
+  ],
+  "ablation_A_rf_test_obs": [
+    [
+      28,
+      3
+    ],
+    [
+      130,
+      704
+    ]
+  ],
+  "ablation_A_rf_test_evt": [
+    [
+      19,
+      1
+    ],
+    [
+      0,
+      4
+    ]
+  ],
+  "ablation_B_lr_test_obs": [
+    [
+      30,
+      1
+    ],
+    [
+      104,
+      601
+    ]
+  ],
+  "ablation_B_dt_test_obs": [
+    [
+      29,
+      2
+    ],
+    [
+      375,
+      330
+    ]
+  ],
+  "ablation_B_rf_test_obs": [
+    [
+      26,
+      5
+    ],
+    [
+      133,
+      572
+    ]
+  ],
+  "ablation_C_lr_test_obs": [
+    [
+      30,
+      1
+    ],
+    [
+      120,
+      714
+    ]
+  ],
+  "ablation_C_dt_test_obs": [
+    [
+      29,
+      2
+    ],
+    [
+      178,
+      656
+    ]
+  ],
+  "ablation_C_rf_test_obs": [
+    [
+      27,
+      4
+    ],
+    [
+      125,
+      709
+    ]
+  ],
+  "ablation_D_lr_test_obs": [
+    [
+      30,
+      1
+    ],
+    [
+      116,
+      718
+    ]
+  ],
+  "ablation_D_dt_test_obs": [
+    [
+      26,
+      5
+    ],
+    [
+      202,
+      632
+    ]
+  ],
+  "ablation_D_rf_test_obs": [
+    [
+      26,
+      5
+    ],
+    [
+      184,
+      650
+    ]
+  ],
+  "ablation_E_lr_test_obs": [
+    [
+      30,
+      1
+    ],
+    [
+      113,
+      721
+    ]
+  ],
+  "ablation_E_dt_test_obs": [
+    [
+      29,
+      2
+    ],
+    [
+      67,
+      767
+    ]
+  ],
+  "ablation_E_rf_test_obs": [
+    [
+      27,
+      4
+    ],
+    [
+      132,
+      702
+    ]
+  ],
+  "cross_geo_lr_test_obs": [
+    [
+      49,
+      4
+    ],
+    [
+      50,
+      593
+    ]
+  ],
+  "cross_geo_dt_test_obs": [
+    [
+      50,
+      3
+    ],
+    [
+      110,
+      533
+    ]
+  ],
+  "cross_geo_rf_test_obs": [
+    [
+      50,
+      3
+    ],
+    [
+      27,
+      616
+    ]
+  ]
+}

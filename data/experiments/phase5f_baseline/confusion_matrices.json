@@ -1,0 +1,82 @@
+{
+  "exp_a_logistic_regression_test_obs": [
+    [
+      30,
+      1
+    ],
+    [
+      113,
+      721
+    ]
+  ],
+  "exp_a_logistic_regression_test_event": [
+    [
+      19,
+      1
+    ],
+    [
+      0,
+      4
+    ]
+  ],
+  "exp_a_decision_tree_test_obs": [
+    [
+      29,
+      2
+    ],
+    [
+      145,
+      689
+    ]
+  ],
+  "exp_a_decision_tree_test_event": [
+    [
+      19,
+      1
+    ],
+    [
+      0,
+      4
+    ]
+  ],
+  "exp_b_night_only_lr_test_obs": [
+    [
+      30,
+      1
+    ],
+    [
+      104,
+      601
+    ]
+  ],
+  "exp_b_night_only_dt_test_obs": [
+    [
+      29,
+      2
+    ],
+    [
+      375,
+      330
+    ]
+  ],
+  "exp_c_cross_geo_lr_test_obs": [
+    [
+      49,
+      4
+    ],
+    [
+      50,
+      593
+    ]
+  ],
+  "exp_c_cross_geo_dt_test_obs": [
+    [
+      50,
+      3
+    ],
+    [
+      110,
+      533
+    ]
+  ]
+}

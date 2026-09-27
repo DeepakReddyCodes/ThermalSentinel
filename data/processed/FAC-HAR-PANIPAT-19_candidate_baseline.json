@@ -1,0 +1,43 @@
+{
+  "facility_id": "FAC-HAR-PANIPAT-19",
+  "facility_name": "Panipat Refinery & Petrochemical Complex",
+  "baseline_status": "EMPIRICAL",
+  "minimum_threshold_required": 30,
+  "provenance": "REAL_NASA_FIRMS",
+  "provenance_type": "FACILITY_ASSOCIATED",
+  "population_scope": "FACILITY_ASSOCIATED",
+  "baseline_period": {
+    "start_date": "2026-01-15",
+    "end_date": "2026-04-25",
+    "total_days": 115
+  },
+  "metrics": {
+    "observation_count": 36,
+    "observation_days": 10,
+    "observations_per_day": 3.6,
+    "frp_median": 5.68,
+    "frp_p25": 3.71,
+    "frp_p75": 10.58,
+    "frp_p90": 12.39,
+    "frp_p95": 19.56,
+    "frp_max": 42.78,
+    "frp_iqr": 6.87,
+    "frp_mad": 3.51
+  },
+  "diurnal": {
+    "day_count": 36,
+    "night_count": 0,
+    "day_pct": 100,
+    "night_pct": 0,
+    "hour_distribution": []
+  },
+  "spatial_distribution": {
+    "known_zone_count": 0,
+    "off_zone_count": 25,
+    "buffer_count": 11,
+    "zones": []
+  },
+  "temporal_frequency": 0.09,
+  "persistence_classification": "PERSISTENT",
+  "created_at": "2026-09-27T06:36:25.802Z"
+}

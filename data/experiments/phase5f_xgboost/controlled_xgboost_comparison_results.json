@@ -1,0 +1,3303 @@
+{
+  "experiment_meta": {
+    "date": "2026-09-11",
+    "phase": "Phase 5F \u2014 Controlled XGBoost Experiment & Model Comparison",
+    "dataset": "data/training_v4/training_candidates_v4.csv",
+    "dataset_version": "ThermalSentinel-Training-Candidates-v4-Diverse",
+    "xgboost_version": "3.4.1",
+    "random_seed": 42,
+    "features": [
+      "log_frp",
+      "brightness_ti4",
+      "brightness_ti5",
+      "brightness_delta",
+      "scan",
+      "track",
+      "is_day"
+    ],
+    "splits": {
+      "train": {
+        "obs": 1503,
+        "flares": 95,
+        "wildfire": 1408,
+        "events": 75
+      },
+      "validation": {
+        "obs": 615,
+        "flares": 29,
+        "wildfire": 586,
+        "events": 23
+      },
+      "test": {
+        "obs": 865,
+        "flares": 31,
+        "wildfire": 834,
+        "events": 24
+      }
+    },
+    "hyperparameters": {
+      "objective": "binary:logistic",
+      "eval_metric": "logloss",
+      "max_depth": 3,
+      "learning_rate": 0.05,
+      "n_estimators": 100,
+      "subsample": 0.8,
+      "colsample_bytree": 0.8,
+      "reg_alpha": 0.1,
+      "reg_lambda": 1.0,
+      "random_state": 42,
+      "n_jobs": 1
+    },
+    "early_stopping_best_iteration": 107
+  },
+  "feature_importances": {
+    "xgboost_gain_normalized": {
+      "log_frp": 0.0695,
+      "brightness_ti4": 0.1564,
+      "brightness_ti5": 0.1577,
+      "brightness_delta": 0.4428,
+      "scan": 0.0931,
+      "track": 0.0805,
+      "is_day": 0.0
+    },
+    "xgboost_validation_permutation_importance": {
+      "log_frp": 0.0604,
+      "brightness_ti4": 0.0124,
+      "brightness_ti5": 0.1771,
+      "brightness_delta": 0.3825,
+      "scan": 0.0066,
+      "track": 0.0882,
+      "is_day": 0.0
+    },
+    "random_forest_d4_importance": {
+      "log_frp": 0.1111,
+      "brightness_ti4": 0.2522,
+      "brightness_ti5": 0.1746,
+      "brightness_delta": 0.3735,
+      "scan": 0.049,
+      "track": 0.024,
+      "is_day": 0.0156
+    },
+    "decision_tree_d3_importance": {
+      "log_frp": 0.0319,
+      "brightness_ti4": 0.0,
+      "brightness_ti5": 0.1488,
+      "brightness_delta": 0.7472,
+      "scan": 0.0338,
+      "track": 0.0384,
+      "is_day": 0.0
+    },
+    "logistic_regression_standardized_coefficients": {
+      "log_frp": 0.5429,
+      "brightness_ti4": 2.1678,
+      "brightness_ti5": -2.5229,
+      "brightness_delta": 4.4216,
+      "scan": -0.0298,
+      "track": 0.5018,
+      "is_day": 4.343
+    }
+  },
+  "primary_test_comparison": {
+    "logistic_regression": {
+      "observation_metrics": {
+        "accuracy": 0.8682,
+        "macro_f1": 0.6358,
+        "roc_auc": 0.9658,
+        "flare_pr_auc": 0.4584,
+        "flare_prevalence": 0.0358,
+        "wildfire_pr_auc": 0.9987,
+        "wildfire_prevalence": 0.9642,
+        "flare": {
+          "precision": 0.2098,
+          "recall": 0.9677,
+          "f1": 0.3448,
+          "support": 31
+        },
+        "wildfire": {
+          "precision": 0.9986,
+          "recall": 0.8645,
+          "f1": 0.9267,
+          "support": 834
+        },
+        "confusion_matrix": {
+          "true_negative_flare": 30,
+          "false_positive_wildfire": 1,
+          "false_negative_flare": 113,
+          "true_positive_wildfire": 721
+        }
+      },
+      "event_metrics": {
+        "event_macro_f1": 0.9316,
+        "flare_event_recall_ratio": "19/20",
+        "flare_event_recall": 0.95,
+        "wildfire_event_recall_ratio": "4/4",
+        "wildfire_event_recall": 1.0,
+        "flare": {
+          "precision": 1.0,
+          "recall": 0.95,
+          "f1": 0.9744,
+          "support": 20
+        },
+        "wildfire": {
+          "precision": 0.8,
+          "recall": 1.0,
+          "f1": 0.8889,
+          "support": 4
+        },
+        "event_confusion_matrix": {
+          "true_negative_flare_events": 19,
+          "false_positive_wildfire_events": 1,
+          "false_negative_flare_events": 0,
+          "true_positive_wildfire_events": 4
+        },
+        "event_predictions": [
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260102",
+            "true_class": "GAS_FLARE",
+            "obs_count": 2,
+            "mean_predicted_prob_wf": 0.1046,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260103",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.1153,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260117",
+            "true_class": "GAS_FLARE",
+            "obs_count": 4,
+            "mean_predicted_prob_wf": 0.1805,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260123",
+            "true_class": "GAS_FLARE",
+            "obs_count": 3,
+            "mean_predicted_prob_wf": 0.1335,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260124",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.6918,
+            "predicted_class": "WILDFIRE_CONFIRMED",
+            "correct": false
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260129",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.1171,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260209",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.1139,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260220",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0315,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260331",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.116,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260414",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0372,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260112",
+            "true_class": "GAS_FLARE",
+            "obs_count": 3,
+            "mean_predicted_prob_wf": 0.1568,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260126",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.2218,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260129",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0716,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260212",
+            "true_class": "GAS_FLARE",
+            "obs_count": 3,
+            "mean_predicted_prob_wf": 0.1283,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260301",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0997,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260303",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0255,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260311",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.1561,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260313",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.061,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260317",
+            "true_class": "GAS_FLARE",
+            "obs_count": 2,
+            "mean_predicted_prob_wf": 0.0714,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260409",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0362,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-WFIGS-WF-CA-COLD-SPRINGS-20200820",
+            "true_class": "WILDFIRE_CONFIRMED",
+            "obs_count": 25,
+            "mean_predicted_prob_wf": 0.8801,
+            "predicted_class": "WILDFIRE_CONFIRMED",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-WFIGS-WF-CO-MARSHALL-20211230",
+            "true_class": "WILDFIRE_CONFIRMED",
+            "obs_count": 76,
+            "mean_predicted_prob_wf": 0.9857,
+            "predicted_class": "WILDFIRE_CONFIRMED",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-WFIGS-WF-ID-WILDHORSE-20220905",
+            "true_class": "WILDFIRE_CONFIRMED",
+            "obs_count": 38,
+            "mean_predicted_prob_wf": 0.8349,
+            "predicted_class": "WILDFIRE_CONFIRMED",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-WFIGS-WF-OR-CEDAR-CREEK-20220911",
+            "true_class": "WILDFIRE_CONFIRMED",
+            "obs_count": 695,
+            "mean_predicted_prob_wf": 0.8508,
+            "predicted_class": "WILDFIRE_CONFIRMED",
+            "correct": true
+          }
+        ]
+      }
+    },
+    "decision_tree_d3": {
+      "observation_metrics": {
+        "accuracy": 0.8301,
+        "macro_f1": 0.5933,
+        "roc_auc": 0.8277,
+        "flare_pr_auc": 0.1427,
+        "flare_prevalence": 0.0358,
+        "wildfire_pr_auc": 0.9934,
+        "wildfire_prevalence": 0.9642,
+        "flare": {
+          "precision": 0.1667,
+          "recall": 0.9355,
+          "f1": 0.2829,
+          "support": 31
+        },
+        "wildfire": {
+          "precision": 0.9971,
+          "recall": 0.8261,
+          "f1": 0.9036,
+          "support": 834
+        },
+        "confusion_matrix": {
+          "true_negative_flare": 29,
+          "false_positive_wildfire": 2,
+          "false_negative_flare": 145,
+          "true_positive_wildfire": 689
+        }
+      },
+      "event_metrics": {
+        "event_macro_f1": 0.9316,
+        "flare_event_recall_ratio": "19/20",
+        "flare_event_recall": 0.95,
+        "wildfire_event_recall_ratio": "4/4",
+        "wildfire_event_recall": 1.0,
+        "flare": {
+          "precision": 1.0,
+          "recall": 0.95,
+          "f1": 0.9744,
+          "support": 20
+        },
+        "wildfire": {
+          "precision": 0.8,
+          "recall": 1.0,
+          "f1": 0.8889,
+          "support": 4
+        },
+        "event_confusion_matrix": {
+          "true_negative_flare_events": 19,
+          "false_positive_wildfire_events": 1,
+          "false_negative_flare_events": 0,
+          "true_positive_wildfire_events": 4
+        },
+        "event_predictions": [
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260102",
+            "true_class": "GAS_FLARE",
+            "obs_count": 2,
+            "mean_predicted_prob_wf": 0.0251,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260103",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0251,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260117",
+            "true_class": "GAS_FLARE",
+            "obs_count": 4,
+            "mean_predicted_prob_wf": 0.0251,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260123",
+            "true_class": "GAS_FLARE",
+            "obs_count": 3,
+            "mean_predicted_prob_wf": 0.3941,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260124",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260129",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0251,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260209",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0251,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260220",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0251,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260331",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0251,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260414",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0251,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260112",
+            "true_class": "GAS_FLARE",
+            "obs_count": 3,
+            "mean_predicted_prob_wf": 0.0251,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260126",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.8001,
+            "predicted_class": "WILDFIRE_CONFIRMED",
+            "correct": false
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260129",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0251,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260212",
+            "true_class": "GAS_FLARE",
+            "obs_count": 3,
+            "mean_predicted_prob_wf": 0.1357,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260301",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0251,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260303",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0251,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260311",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0251,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260313",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0251,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260317",
+            "true_class": "GAS_FLARE",
+            "obs_count": 2,
+            "mean_predicted_prob_wf": 0.0251,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260409",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0251,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-WFIGS-WF-CA-COLD-SPRINGS-20200820",
+            "true_class": "WILDFIRE_CONFIRMED",
+            "obs_count": 25,
+            "mean_predicted_prob_wf": 0.928,
+            "predicted_class": "WILDFIRE_CONFIRMED",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-WFIGS-WF-CO-MARSHALL-20211230",
+            "true_class": "WILDFIRE_CONFIRMED",
+            "obs_count": 76,
+            "mean_predicted_prob_wf": 1.0,
+            "predicted_class": "WILDFIRE_CONFIRMED",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-WFIGS-WF-ID-WILDHORSE-20220905",
+            "true_class": "WILDFIRE_CONFIRMED",
+            "obs_count": 38,
+            "mean_predicted_prob_wf": 0.9389,
+            "predicted_class": "WILDFIRE_CONFIRMED",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-WFIGS-WF-OR-CEDAR-CREEK-20220911",
+            "true_class": "WILDFIRE_CONFIRMED",
+            "obs_count": 695,
+            "mean_predicted_prob_wf": 0.7671,
+            "predicted_class": "WILDFIRE_CONFIRMED",
+            "correct": true
+          }
+        ]
+      }
+    },
+    "random_forest_d4": {
+      "observation_metrics": {
+        "accuracy": 0.8462,
+        "macro_f1": 0.605,
+        "roc_auc": 0.9702,
+        "flare_pr_auc": 0.8028,
+        "flare_prevalence": 0.0358,
+        "wildfire_pr_auc": 0.9988,
+        "wildfire_prevalence": 0.9642,
+        "flare": {
+          "precision": 0.1772,
+          "recall": 0.9032,
+          "f1": 0.2963,
+          "support": 31
+        },
+        "wildfire": {
+          "precision": 0.9958,
+          "recall": 0.8441,
+          "f1": 0.9137,
+          "support": 834
+        },
+        "confusion_matrix": {
+          "true_negative_flare": 28,
+          "false_positive_wildfire": 3,
+          "false_negative_flare": 130,
+          "true_positive_wildfire": 704
+        }
+      },
+      "event_metrics": {
+        "event_macro_f1": 0.9316,
+        "flare_event_recall_ratio": "19/20",
+        "flare_event_recall": 0.95,
+        "wildfire_event_recall_ratio": "4/4",
+        "wildfire_event_recall": 1.0,
+        "flare": {
+          "precision": 1.0,
+          "recall": 0.95,
+          "f1": 0.9744,
+          "support": 20
+        },
+        "wildfire": {
+          "precision": 0.8,
+          "recall": 1.0,
+          "f1": 0.8889,
+          "support": 4
+        },
+        "event_confusion_matrix": {
+          "true_negative_flare_events": 19,
+          "false_positive_wildfire_events": 1,
+          "false_negative_flare_events": 0,
+          "true_positive_wildfire_events": 4
+        },
+        "event_predictions": [
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260102",
+            "true_class": "GAS_FLARE",
+            "obs_count": 2,
+            "mean_predicted_prob_wf": 0.2083,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260103",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.1644,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260117",
+            "true_class": "GAS_FLARE",
+            "obs_count": 4,
+            "mean_predicted_prob_wf": 0.0756,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260123",
+            "true_class": "GAS_FLARE",
+            "obs_count": 3,
+            "mean_predicted_prob_wf": 0.4155,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260124",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.5805,
+            "predicted_class": "WILDFIRE_CONFIRMED",
+            "correct": false
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260129",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.2353,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260209",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.086,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260220",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0651,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260331",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0582,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260414",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.1701,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260112",
+            "true_class": "GAS_FLARE",
+            "obs_count": 3,
+            "mean_predicted_prob_wf": 0.0968,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260126",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.3226,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260129",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0527,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260212",
+            "true_class": "GAS_FLARE",
+            "obs_count": 3,
+            "mean_predicted_prob_wf": 0.4388,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260301",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.098,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260303",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.062,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260311",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0987,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260313",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.2015,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260317",
+            "true_class": "GAS_FLARE",
+            "obs_count": 2,
+            "mean_predicted_prob_wf": 0.1845,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260409",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0635,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-WFIGS-WF-CA-COLD-SPRINGS-20200820",
+            "true_class": "WILDFIRE_CONFIRMED",
+            "obs_count": 25,
+            "mean_predicted_prob_wf": 0.8493,
+            "predicted_class": "WILDFIRE_CONFIRMED",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-WFIGS-WF-CO-MARSHALL-20211230",
+            "true_class": "WILDFIRE_CONFIRMED",
+            "obs_count": 76,
+            "mean_predicted_prob_wf": 0.9891,
+            "predicted_class": "WILDFIRE_CONFIRMED",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-WFIGS-WF-ID-WILDHORSE-20220905",
+            "true_class": "WILDFIRE_CONFIRMED",
+            "obs_count": 38,
+            "mean_predicted_prob_wf": 0.8684,
+            "predicted_class": "WILDFIRE_CONFIRMED",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-WFIGS-WF-OR-CEDAR-CREEK-20220911",
+            "true_class": "WILDFIRE_CONFIRMED",
+            "obs_count": 695,
+            "mean_predicted_prob_wf": 0.7964,
+            "predicted_class": "WILDFIRE_CONFIRMED",
+            "correct": true
+          }
+        ]
+      }
+    },
+    "xgboost_classifier": {
+      "observation_metrics": {
+        "accuracy": 0.8798,
+        "macro_f1": 0.6419,
+        "roc_auc": 0.9779,
+        "flare_pr_auc": 0.8427,
+        "flare_prevalence": 0.0358,
+        "wildfire_pr_auc": 0.9991,
+        "wildfire_prevalence": 0.9642,
+        "flare": {
+          "precision": 0.2171,
+          "recall": 0.9032,
+          "f1": 0.35,
+          "support": 31
+        },
+        "wildfire": {
+          "precision": 0.9959,
+          "recall": 0.8789,
+          "f1": 0.9338,
+          "support": 834
+        },
+        "confusion_matrix": {
+          "true_negative_flare": 28,
+          "false_positive_wildfire": 3,
+          "false_negative_flare": 101,
+          "true_positive_wildfire": 733
+        }
+      },
+      "event_metrics": {
+        "event_macro_f1": 0.9316,
+        "flare_event_recall_ratio": "19/20",
+        "flare_event_recall": 0.95,
+        "wildfire_event_recall_ratio": "4/4",
+        "wildfire_event_recall": 1.0,
+        "flare": {
+          "precision": 1.0,
+          "recall": 0.95,
+          "f1": 0.9744,
+          "support": 20
+        },
+        "wildfire": {
+          "precision": 0.8,
+          "recall": 1.0,
+          "f1": 0.8889,
+          "support": 4
+        },
+        "event_confusion_matrix": {
+          "true_negative_flare_events": 19,
+          "false_positive_wildfire_events": 1,
+          "false_negative_flare_events": 0,
+          "true_positive_wildfire_events": 4
+        },
+        "event_predictions": [
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260102",
+            "true_class": "GAS_FLARE",
+            "obs_count": 2,
+            "mean_predicted_prob_wf": 0.0912,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260103",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.3087,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260117",
+            "true_class": "GAS_FLARE",
+            "obs_count": 4,
+            "mean_predicted_prob_wf": 0.0371,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260123",
+            "true_class": "GAS_FLARE",
+            "obs_count": 3,
+            "mean_predicted_prob_wf": 0.2885,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260124",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.9442,
+            "predicted_class": "WILDFIRE_CONFIRMED",
+            "correct": false
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260129",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0592,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260209",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0223,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260220",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0186,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260331",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.013,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260414",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0421,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260112",
+            "true_class": "GAS_FLARE",
+            "obs_count": 3,
+            "mean_predicted_prob_wf": 0.0233,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260126",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.2408,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260129",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0145,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260212",
+            "true_class": "GAS_FLARE",
+            "obs_count": 3,
+            "mean_predicted_prob_wf": 0.3539,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260301",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0216,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260303",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0182,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260311",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0643,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260313",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0489,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260317",
+            "true_class": "GAS_FLARE",
+            "obs_count": 2,
+            "mean_predicted_prob_wf": 0.03,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260409",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0164,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-WFIGS-WF-CA-COLD-SPRINGS-20200820",
+            "true_class": "WILDFIRE_CONFIRMED",
+            "obs_count": 25,
+            "mean_predicted_prob_wf": 0.8869,
+            "predicted_class": "WILDFIRE_CONFIRMED",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-WFIGS-WF-CO-MARSHALL-20211230",
+            "true_class": "WILDFIRE_CONFIRMED",
+            "obs_count": 76,
+            "mean_predicted_prob_wf": 0.9866,
+            "predicted_class": "WILDFIRE_CONFIRMED",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-WFIGS-WF-ID-WILDHORSE-20220905",
+            "true_class": "WILDFIRE_CONFIRMED",
+            "obs_count": 38,
+            "mean_predicted_prob_wf": 0.9621,
+            "predicted_class": "WILDFIRE_CONFIRMED",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-WFIGS-WF-OR-CEDAR-CREEK-20220911",
+            "true_class": "WILDFIRE_CONFIRMED",
+            "obs_count": 695,
+            "mean_predicted_prob_wf": 0.8643,
+            "predicted_class": "WILDFIRE_CONFIRMED",
+            "correct": true
+          }
+        ]
+      }
+    }
+  },
+  "validation_comparison": {
+    "logistic_regression": {
+      "observation_metrics": {
+        "accuracy": 0.9659,
+        "macro_f1": 0.8471,
+        "roc_auc": 0.9873,
+        "flare_pr_auc": 0.7353,
+        "flare_prevalence": 0.0472,
+        "wildfire_pr_auc": 0.9994,
+        "wildfire_prevalence": 0.9528,
+        "flare": {
+          "precision": 0.5909,
+          "recall": 0.8966,
+          "f1": 0.7123,
+          "support": 29
+        },
+        "wildfire": {
+          "precision": 0.9947,
+          "recall": 0.9693,
+          "f1": 0.9818,
+          "support": 586
+        },
+        "confusion_matrix": {
+          "true_negative_flare": 26,
+          "false_positive_wildfire": 3,
+          "false_negative_flare": 18,
+          "true_positive_wildfire": 568
+        }
+      },
+      "event_metrics": {
+        "event_macro_f1": 0.9158,
+        "flare_event_recall_ratio": "19/20",
+        "flare_event_recall": 0.95,
+        "wildfire_event_recall_ratio": "3/3",
+        "wildfire_event_recall": 1.0,
+        "flare": {
+          "precision": 1.0,
+          "recall": 0.95,
+          "f1": 0.9744,
+          "support": 20
+        },
+        "wildfire": {
+          "precision": 0.75,
+          "recall": 1.0,
+          "f1": 0.8571,
+          "support": 3
+        },
+        "event_confusion_matrix": {
+          "true_negative_flare_events": 19,
+          "false_positive_wildfire_events": 1,
+          "false_negative_flare_events": 0,
+          "true_positive_wildfire_events": 3
+        },
+        "event_predictions": [
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260213",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.1178,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260301",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.06,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260319",
+            "true_class": "GAS_FLARE",
+            "obs_count": 2,
+            "mean_predicted_prob_wf": 0.1297,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260324",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0366,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260327",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0916,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260102",
+            "true_class": "GAS_FLARE",
+            "obs_count": 2,
+            "mean_predicted_prob_wf": 0.1351,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260106",
+            "true_class": "GAS_FLARE",
+            "obs_count": 2,
+            "mean_predicted_prob_wf": 0.1201,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260107",
+            "true_class": "GAS_FLARE",
+            "obs_count": 3,
+            "mean_predicted_prob_wf": 0.1469,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260108",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0713,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260113",
+            "true_class": "GAS_FLARE",
+            "obs_count": 2,
+            "mean_predicted_prob_wf": 0.0571,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260115",
+            "true_class": "GAS_FLARE",
+            "obs_count": 2,
+            "mean_predicted_prob_wf": 0.2566,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260124",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.2685,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260130",
+            "true_class": "GAS_FLARE",
+            "obs_count": 3,
+            "mean_predicted_prob_wf": 0.7668,
+            "predicted_class": "WILDFIRE_CONFIRMED",
+            "correct": false
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260213",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.2289,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260304",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0831,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260306",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.032,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260326",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.1702,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260327",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.1094,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260331",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.1374,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260408",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0286,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-WFIGS-WF-AZ-BOTTOM-20210629",
+            "true_class": "WILDFIRE_CONFIRMED",
+            "obs_count": 50,
+            "mean_predicted_prob_wf": 0.8654,
+            "predicted_class": "WILDFIRE_CONFIRMED",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-WFIGS-WF-CA-SOUTHERN-20210502",
+            "true_class": "WILDFIRE_CONFIRMED",
+            "obs_count": 77,
+            "mean_predicted_prob_wf": 0.9128,
+            "predicted_class": "WILDFIRE_CONFIRMED",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-WFIGS-WF-WA-WHITNEY-20200908",
+            "true_class": "WILDFIRE_CONFIRMED",
+            "obs_count": 459,
+            "mean_predicted_prob_wf": 0.9788,
+            "predicted_class": "WILDFIRE_CONFIRMED",
+            "correct": true
+          }
+        ]
+      }
+    },
+    "decision_tree_d3": {
+      "observation_metrics": {
+        "accuracy": 0.9821,
+        "macro_f1": 0.9021,
+        "roc_auc": 0.9744,
+        "flare_pr_auc": 0.8308,
+        "flare_prevalence": 0.0472,
+        "wildfire_pr_auc": 0.9976,
+        "wildfire_prevalence": 0.9528,
+        "flare": {
+          "precision": 0.8,
+          "recall": 0.8276,
+          "f1": 0.8136,
+          "support": 29
+        },
+        "wildfire": {
+          "precision": 0.9915,
+          "recall": 0.9898,
+          "f1": 0.9906,
+          "support": 586
+        },
+        "confusion_matrix": {
+          "true_negative_flare": 24,
+          "false_positive_wildfire": 5,
+          "false_negative_flare": 6,
+          "true_positive_wildfire": 580
+        }
+      },
+      "event_metrics": {
+        "event_macro_f1": 0.8487,
+        "flare_event_recall_ratio": "18/20",
+        "flare_event_recall": 0.9,
+        "wildfire_event_recall_ratio": "3/3",
+        "wildfire_event_recall": 1.0,
+        "flare": {
+          "precision": 1.0,
+          "recall": 0.9,
+          "f1": 0.9474,
+          "support": 20
+        },
+        "wildfire": {
+          "precision": 0.6,
+          "recall": 1.0,
+          "f1": 0.75,
+          "support": 3
+        },
+        "event_confusion_matrix": {
+          "true_negative_flare_events": 18,
+          "false_positive_wildfire_events": 2,
+          "false_negative_flare_events": 0,
+          "true_positive_wildfire_events": 3
+        },
+        "event_predictions": [
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260213",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0251,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260301",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0251,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260319",
+            "true_class": "GAS_FLARE",
+            "obs_count": 2,
+            "mean_predicted_prob_wf": 0.4126,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260324",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0251,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260327",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0251,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260102",
+            "true_class": "GAS_FLARE",
+            "obs_count": 2,
+            "mean_predicted_prob_wf": 0.0251,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260106",
+            "true_class": "GAS_FLARE",
+            "obs_count": 2,
+            "mean_predicted_prob_wf": 0.0251,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260107",
+            "true_class": "GAS_FLARE",
+            "obs_count": 3,
+            "mean_predicted_prob_wf": 0.0251,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260108",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0251,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260113",
+            "true_class": "GAS_FLARE",
+            "obs_count": 2,
+            "mean_predicted_prob_wf": 0.0251,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260115",
+            "true_class": "GAS_FLARE",
+            "obs_count": 2,
+            "mean_predicted_prob_wf": 0.0251,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260124",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.8001,
+            "predicted_class": "WILDFIRE_CONFIRMED",
+            "correct": false
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260130",
+            "true_class": "GAS_FLARE",
+            "obs_count": 3,
+            "mean_predicted_prob_wf": 0.8256,
+            "predicted_class": "WILDFIRE_CONFIRMED",
+            "correct": false
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260213",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260304",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0251,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260306",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0251,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260326",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0251,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260327",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0251,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260331",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0251,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260408",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0251,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-WFIGS-WF-AZ-BOTTOM-20210629",
+            "true_class": "WILDFIRE_CONFIRMED",
+            "obs_count": 50,
+            "mean_predicted_prob_wf": 0.961,
+            "predicted_class": "WILDFIRE_CONFIRMED",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-WFIGS-WF-CA-SOUTHERN-20210502",
+            "true_class": "WILDFIRE_CONFIRMED",
+            "obs_count": 77,
+            "mean_predicted_prob_wf": 0.9734,
+            "predicted_class": "WILDFIRE_CONFIRMED",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-WFIGS-WF-WA-WHITNEY-20200908",
+            "true_class": "WILDFIRE_CONFIRMED",
+            "obs_count": 459,
+            "mean_predicted_prob_wf": 0.9794,
+            "predicted_class": "WILDFIRE_CONFIRMED",
+            "correct": true
+          }
+        ]
+      }
+    },
+    "random_forest_d4": {
+      "observation_metrics": {
+        "accuracy": 0.9577,
+        "macro_f1": 0.8177,
+        "roc_auc": 0.9825,
+        "flare_pr_auc": 0.9059,
+        "flare_prevalence": 0.0472,
+        "wildfire_pr_auc": 0.999,
+        "wildfire_prevalence": 0.9528,
+        "flare": {
+          "precision": 0.5319,
+          "recall": 0.8621,
+          "f1": 0.6579,
+          "support": 29
+        },
+        "wildfire": {
+          "precision": 0.993,
+          "recall": 0.9625,
+          "f1": 0.9775,
+          "support": 586
+        },
+        "confusion_matrix": {
+          "true_negative_flare": 25,
+          "false_positive_wildfire": 4,
+          "false_negative_flare": 22,
+          "true_positive_wildfire": 564
+        }
+      },
+      "event_metrics": {
+        "event_macro_f1": 0.8487,
+        "flare_event_recall_ratio": "18/20",
+        "flare_event_recall": 0.9,
+        "wildfire_event_recall_ratio": "3/3",
+        "wildfire_event_recall": 1.0,
+        "flare": {
+          "precision": 1.0,
+          "recall": 0.9,
+          "f1": 0.9474,
+          "support": 20
+        },
+        "wildfire": {
+          "precision": 0.6,
+          "recall": 1.0,
+          "f1": 0.75,
+          "support": 3
+        },
+        "event_confusion_matrix": {
+          "true_negative_flare_events": 18,
+          "false_positive_wildfire_events": 2,
+          "false_negative_flare_events": 0,
+          "true_positive_wildfire_events": 3
+        },
+        "event_predictions": [
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260213",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.089,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260301",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0718,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260319",
+            "true_class": "GAS_FLARE",
+            "obs_count": 2,
+            "mean_predicted_prob_wf": 0.2621,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260324",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0635,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260327",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0519,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260102",
+            "true_class": "GAS_FLARE",
+            "obs_count": 2,
+            "mean_predicted_prob_wf": 0.0945,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260106",
+            "true_class": "GAS_FLARE",
+            "obs_count": 2,
+            "mean_predicted_prob_wf": 0.1206,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260107",
+            "true_class": "GAS_FLARE",
+            "obs_count": 3,
+            "mean_predicted_prob_wf": 0.1224,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260108",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0879,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260113",
+            "true_class": "GAS_FLARE",
+            "obs_count": 2,
+            "mean_predicted_prob_wf": 0.1459,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260115",
+            "true_class": "GAS_FLARE",
+            "obs_count": 2,
+            "mean_predicted_prob_wf": 0.1143,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260124",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.3593,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260130",
+            "true_class": "GAS_FLARE",
+            "obs_count": 3,
+            "mean_predicted_prob_wf": 0.7419,
+            "predicted_class": "WILDFIRE_CONFIRMED",
+            "correct": false
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260213",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.5948,
+            "predicted_class": "WILDFIRE_CONFIRMED",
+            "correct": false
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260304",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0678,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260306",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0635,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260326",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.1638,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260327",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0519,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260331",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0807,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260408",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.062,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-WFIGS-WF-AZ-BOTTOM-20210629",
+            "true_class": "WILDFIRE_CONFIRMED",
+            "obs_count": 50,
+            "mean_predicted_prob_wf": 0.9152,
+            "predicted_class": "WILDFIRE_CONFIRMED",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-WFIGS-WF-CA-SOUTHERN-20210502",
+            "true_class": "WILDFIRE_CONFIRMED",
+            "obs_count": 77,
+            "mean_predicted_prob_wf": 0.9434,
+            "predicted_class": "WILDFIRE_CONFIRMED",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-WFIGS-WF-WA-WHITNEY-20200908",
+            "true_class": "WILDFIRE_CONFIRMED",
+            "obs_count": 459,
+            "mean_predicted_prob_wf": 0.8932,
+            "predicted_class": "WILDFIRE_CONFIRMED",
+            "correct": true
+          }
+        ]
+      }
+    },
+    "xgboost_classifier": {
+      "observation_metrics": {
+        "accuracy": 0.9919,
+        "macro_f1": 0.954,
+        "roc_auc": 0.994,
+        "flare_pr_auc": 0.9524,
+        "flare_prevalence": 0.0472,
+        "wildfire_pr_auc": 0.9997,
+        "wildfire_prevalence": 0.9528,
+        "flare": {
+          "precision": 0.9286,
+          "recall": 0.8966,
+          "f1": 0.9123,
+          "support": 29
+        },
+        "wildfire": {
+          "precision": 0.9949,
+          "recall": 0.9966,
+          "f1": 0.9957,
+          "support": 586
+        },
+        "confusion_matrix": {
+          "true_negative_flare": 26,
+          "false_positive_wildfire": 3,
+          "false_negative_flare": 2,
+          "true_positive_wildfire": 584
+        }
+      },
+      "event_metrics": {
+        "event_macro_f1": 0.9158,
+        "flare_event_recall_ratio": "19/20",
+        "flare_event_recall": 0.95,
+        "wildfire_event_recall_ratio": "3/3",
+        "wildfire_event_recall": 1.0,
+        "flare": {
+          "precision": 1.0,
+          "recall": 0.95,
+          "f1": 0.9744,
+          "support": 20
+        },
+        "wildfire": {
+          "precision": 0.75,
+          "recall": 1.0,
+          "f1": 0.8571,
+          "support": 3
+        },
+        "event_confusion_matrix": {
+          "true_negative_flare_events": 19,
+          "false_positive_wildfire_events": 1,
+          "false_negative_flare_events": 0,
+          "true_positive_wildfire_events": 3
+        },
+        "event_predictions": [
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260213",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.034,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260301",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0144,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260319",
+            "true_class": "GAS_FLARE",
+            "obs_count": 2,
+            "mean_predicted_prob_wf": 0.1807,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260324",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0164,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260327",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0103,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260102",
+            "true_class": "GAS_FLARE",
+            "obs_count": 2,
+            "mean_predicted_prob_wf": 0.0288,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260106",
+            "true_class": "GAS_FLARE",
+            "obs_count": 2,
+            "mean_predicted_prob_wf": 0.11,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260107",
+            "true_class": "GAS_FLARE",
+            "obs_count": 3,
+            "mean_predicted_prob_wf": 0.0902,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260108",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.067,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260113",
+            "true_class": "GAS_FLARE",
+            "obs_count": 2,
+            "mean_predicted_prob_wf": 0.0284,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260115",
+            "true_class": "GAS_FLARE",
+            "obs_count": 2,
+            "mean_predicted_prob_wf": 0.0657,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260124",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.281,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260130",
+            "true_class": "GAS_FLARE",
+            "obs_count": 3,
+            "mean_predicted_prob_wf": 0.7492,
+            "predicted_class": "WILDFIRE_CONFIRMED",
+            "correct": false
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260213",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.3824,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260304",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0146,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260306",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0178,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260326",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0146,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260327",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0098,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260331",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0175,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260408",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0166,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-WFIGS-WF-AZ-BOTTOM-20210629",
+            "true_class": "WILDFIRE_CONFIRMED",
+            "obs_count": 50,
+            "mean_predicted_prob_wf": 0.9394,
+            "predicted_class": "WILDFIRE_CONFIRMED",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-WFIGS-WF-CA-SOUTHERN-20210502",
+            "true_class": "WILDFIRE_CONFIRMED",
+            "obs_count": 77,
+            "mean_predicted_prob_wf": 0.9689,
+            "predicted_class": "WILDFIRE_CONFIRMED",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-WFIGS-WF-WA-WHITNEY-20200908",
+            "true_class": "WILDFIRE_CONFIRMED",
+            "obs_count": 459,
+            "mean_predicted_prob_wf": 0.965,
+            "predicted_class": "WILDFIRE_CONFIRMED",
+            "correct": true
+          }
+        ]
+      }
+    }
+  },
+  "cross_geographic_holdout_comparison": {
+    "logistic_regression": {
+      "observation_metrics": {
+        "accuracy": 0.9224,
+        "macro_f1": 0.8006,
+        "roc_auc": 0.9697,
+        "flare_pr_auc": 0.6106,
+        "flare_prevalence": 0.0761,
+        "wildfire_pr_auc": 0.9974,
+        "wildfire_prevalence": 0.9239,
+        "flare": {
+          "precision": 0.4949,
+          "recall": 0.9245,
+          "f1": 0.6447,
+          "support": 53
+        },
+        "wildfire": {
+          "precision": 0.9933,
+          "recall": 0.9222,
+          "f1": 0.9565,
+          "support": 643
+        },
+        "confusion_matrix": {
+          "true_negative_flare": 49,
+          "false_positive_wildfire": 4,
+          "false_negative_flare": 50,
+          "true_positive_wildfire": 593
+        }
+      },
+      "event_metrics": {
+        "event_macro_f1": 0.9353,
+        "flare_event_recall_ratio": "33/35",
+        "flare_event_recall": 0.9429,
+        "wildfire_event_recall_ratio": "9/9",
+        "wildfire_event_recall": 1.0,
+        "flare": {
+          "precision": 1.0,
+          "recall": 0.9429,
+          "f1": 0.9706,
+          "support": 35
+        },
+        "wildfire": {
+          "precision": 0.8182,
+          "recall": 1.0,
+          "f1": 0.9,
+          "support": 9
+        },
+        "event_confusion_matrix": {
+          "true_negative_flare_events": 33,
+          "false_positive_wildfire_events": 2,
+          "false_negative_flare_events": 0,
+          "true_positive_wildfire_events": 9
+        },
+        "event_predictions": [
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260102",
+            "true_class": "GAS_FLARE",
+            "obs_count": 2,
+            "mean_predicted_prob_wf": 0.1104,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260103",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.1495,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260117",
+            "true_class": "GAS_FLARE",
+            "obs_count": 4,
+            "mean_predicted_prob_wf": 0.1609,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260123",
+            "true_class": "GAS_FLARE",
+            "obs_count": 3,
+            "mean_predicted_prob_wf": 0.151,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260124",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.7741,
+            "predicted_class": "WILDFIRE_CONFIRMED",
+            "correct": false
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260129",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.1214,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260209",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.109,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260213",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.1095,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260220",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0288,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260301",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0606,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260324",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0391,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260331",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0647,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260414",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0288,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260106",
+            "true_class": "GAS_FLARE",
+            "obs_count": 2,
+            "mean_predicted_prob_wf": 0.1094,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260107",
+            "true_class": "GAS_FLARE",
+            "obs_count": 3,
+            "mean_predicted_prob_wf": 0.1448,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260108",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0632,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260112",
+            "true_class": "GAS_FLARE",
+            "obs_count": 3,
+            "mean_predicted_prob_wf": 0.1721,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260113",
+            "true_class": "GAS_FLARE",
+            "obs_count": 2,
+            "mean_predicted_prob_wf": 0.0536,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260115",
+            "true_class": "GAS_FLARE",
+            "obs_count": 2,
+            "mean_predicted_prob_wf": 0.1336,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260126",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.1752,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260129",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0696,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260130",
+            "true_class": "GAS_FLARE",
+            "obs_count": 3,
+            "mean_predicted_prob_wf": 0.862,
+            "predicted_class": "WILDFIRE_CONFIRMED",
+            "correct": false
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260212",
+            "true_class": "GAS_FLARE",
+            "obs_count": 3,
+            "mean_predicted_prob_wf": 0.1066,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260301",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.088,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260303",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0195,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260304",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0352,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260306",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.03,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260311",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0742,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260313",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0507,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260317",
+            "true_class": "GAS_FLARE",
+            "obs_count": 2,
+            "mean_predicted_prob_wf": 0.0558,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260326",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.041,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260327",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0606,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260331",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0784,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260408",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0247,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260409",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0377,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-WFIGS-WF-AZ-BOTTOM-20210629",
+            "true_class": "WILDFIRE_CONFIRMED",
+            "obs_count": 50,
+            "mean_predicted_prob_wf": 0.8608,
+            "predicted_class": "WILDFIRE_CONFIRMED",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-WFIGS-WF-CO-MARSHALL-20211230",
+            "true_class": "WILDFIRE_CONFIRMED",
+            "obs_count": 76,
+            "mean_predicted_prob_wf": 0.9746,
+            "predicted_class": "WILDFIRE_CONFIRMED",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-WFIGS-WF-ID-TWO-AND-HALF-20220909",
+            "true_class": "WILDFIRE_CONFIRMED",
+            "obs_count": 111,
+            "mean_predicted_prob_wf": 0.9022,
+            "predicted_class": "WILDFIRE_CONFIRMED",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-WFIGS-WF-ID-WILDHORSE-20220905",
+            "true_class": "WILDFIRE_CONFIRMED",
+            "obs_count": 38,
+            "mean_predicted_prob_wf": 0.8461,
+            "predicted_class": "WILDFIRE_CONFIRMED",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-WFIGS-WF-MT-GASS-FLATS-20200924",
+            "true_class": "WILDFIRE_CONFIRMED",
+            "obs_count": 27,
+            "mean_predicted_prob_wf": 0.9442,
+            "predicted_class": "WILDFIRE_CONFIRMED",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-WFIGS-WF-NM-HERMITS-PEAK-20220410",
+            "true_class": "WILDFIRE_CONFIRMED",
+            "obs_count": 13,
+            "mean_predicted_prob_wf": 0.9934,
+            "predicted_class": "WILDFIRE_CONFIRMED",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-WFIGS-WF-TX-CANADIAN-RIVER-20220330",
+            "true_class": "WILDFIRE_CONFIRMED",
+            "obs_count": 10,
+            "mean_predicted_prob_wf": 0.9999,
+            "predicted_class": "WILDFIRE_CONFIRMED",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-WFIGS-WF-TX-KIDD-20220318",
+            "true_class": "WILDFIRE_CONFIRMED",
+            "obs_count": 183,
+            "mean_predicted_prob_wf": 0.9817,
+            "predicted_class": "WILDFIRE_CONFIRMED",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-WFIGS-WF-TX-SMOKE-STACK-20220503",
+            "true_class": "WILDFIRE_CONFIRMED",
+            "obs_count": 135,
+            "mean_predicted_prob_wf": 0.7593,
+            "predicted_class": "WILDFIRE_CONFIRMED",
+            "correct": true
+          }
+        ]
+      }
+    },
+    "decision_tree_d3": {
+      "observation_metrics": {
+        "accuracy": 0.8376,
+        "macro_f1": 0.6868,
+        "roc_auc": 0.9541,
+        "flare_pr_auc": 0.8208,
+        "flare_prevalence": 0.0761,
+        "wildfire_pr_auc": 0.9925,
+        "wildfire_prevalence": 0.9239,
+        "flare": {
+          "precision": 0.3125,
+          "recall": 0.9434,
+          "f1": 0.4695,
+          "support": 53
+        },
+        "wildfire": {
+          "precision": 0.9944,
+          "recall": 0.8289,
+          "f1": 0.9042,
+          "support": 643
+        },
+        "confusion_matrix": {
+          "true_negative_flare": 50,
+          "false_positive_wildfire": 3,
+          "false_negative_flare": 110,
+          "true_positive_wildfire": 533
+        }
+      },
+      "event_metrics": {
+        "event_macro_f1": 0.9062,
+        "flare_event_recall_ratio": "32/35",
+        "flare_event_recall": 0.9143,
+        "wildfire_event_recall_ratio": "9/9",
+        "wildfire_event_recall": 1.0,
+        "flare": {
+          "precision": 1.0,
+          "recall": 0.9143,
+          "f1": 0.9552,
+          "support": 35
+        },
+        "wildfire": {
+          "precision": 0.75,
+          "recall": 1.0,
+          "f1": 0.8571,
+          "support": 9
+        },
+        "event_confusion_matrix": {
+          "true_negative_flare_events": 32,
+          "false_positive_wildfire_events": 3,
+          "false_negative_flare_events": 0,
+          "true_positive_wildfire_events": 9
+        },
+        "event_predictions": [
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260102",
+            "true_class": "GAS_FLARE",
+            "obs_count": 2,
+            "mean_predicted_prob_wf": 0.0341,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260103",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0341,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260117",
+            "true_class": "GAS_FLARE",
+            "obs_count": 4,
+            "mean_predicted_prob_wf": 0.0341,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260123",
+            "true_class": "GAS_FLARE",
+            "obs_count": 3,
+            "mean_predicted_prob_wf": 0.6167,
+            "predicted_class": "WILDFIRE_CONFIRMED",
+            "correct": false
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260124",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 1.0,
+            "predicted_class": "WILDFIRE_CONFIRMED",
+            "correct": false
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260129",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0341,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260209",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0341,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260213",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0341,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260220",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0341,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260301",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0341,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260324",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0341,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260331",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0341,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260414",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0341,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260106",
+            "true_class": "GAS_FLARE",
+            "obs_count": 2,
+            "mean_predicted_prob_wf": 0.0341,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260107",
+            "true_class": "GAS_FLARE",
+            "obs_count": 3,
+            "mean_predicted_prob_wf": 0.0341,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260108",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0341,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260112",
+            "true_class": "GAS_FLARE",
+            "obs_count": 3,
+            "mean_predicted_prob_wf": 0.0341,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260113",
+            "true_class": "GAS_FLARE",
+            "obs_count": 2,
+            "mean_predicted_prob_wf": 0.0341,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260115",
+            "true_class": "GAS_FLARE",
+            "obs_count": 2,
+            "mean_predicted_prob_wf": 0.0341,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260126",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.425,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260129",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0341,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260130",
+            "true_class": "GAS_FLARE",
+            "obs_count": 3,
+            "mean_predicted_prob_wf": 0.6167,
+            "predicted_class": "WILDFIRE_CONFIRMED",
+            "correct": false
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260212",
+            "true_class": "GAS_FLARE",
+            "obs_count": 3,
+            "mean_predicted_prob_wf": 0.2947,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260301",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0341,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260303",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0341,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260304",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0341,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260306",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0341,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260311",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0341,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260313",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0341,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260317",
+            "true_class": "GAS_FLARE",
+            "obs_count": 2,
+            "mean_predicted_prob_wf": 0.0341,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260326",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0341,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260327",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0341,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260331",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0341,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260408",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0341,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260409",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0341,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-WFIGS-WF-AZ-BOTTOM-20210629",
+            "true_class": "WILDFIRE_CONFIRMED",
+            "obs_count": 50,
+            "mean_predicted_prob_wf": 0.9614,
+            "predicted_class": "WILDFIRE_CONFIRMED",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-WFIGS-WF-CO-MARSHALL-20211230",
+            "true_class": "WILDFIRE_CONFIRMED",
+            "obs_count": 76,
+            "mean_predicted_prob_wf": 1.0,
+            "predicted_class": "WILDFIRE_CONFIRMED",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-WFIGS-WF-ID-TWO-AND-HALF-20220909",
+            "true_class": "WILDFIRE_CONFIRMED",
+            "obs_count": 111,
+            "mean_predicted_prob_wf": 0.9119,
+            "predicted_class": "WILDFIRE_CONFIRMED",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-WFIGS-WF-ID-WILDHORSE-20220905",
+            "true_class": "WILDFIRE_CONFIRMED",
+            "obs_count": 38,
+            "mean_predicted_prob_wf": 0.8033,
+            "predicted_class": "WILDFIRE_CONFIRMED",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-WFIGS-WF-MT-GASS-FLATS-20200924",
+            "true_class": "WILDFIRE_CONFIRMED",
+            "obs_count": 27,
+            "mean_predicted_prob_wf": 1.0,
+            "predicted_class": "WILDFIRE_CONFIRMED",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-WFIGS-WF-NM-HERMITS-PEAK-20220410",
+            "true_class": "WILDFIRE_CONFIRMED",
+            "obs_count": 13,
+            "mean_predicted_prob_wf": 1.0,
+            "predicted_class": "WILDFIRE_CONFIRMED",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-WFIGS-WF-TX-CANADIAN-RIVER-20220330",
+            "true_class": "WILDFIRE_CONFIRMED",
+            "obs_count": 10,
+            "mean_predicted_prob_wf": 1.0,
+            "predicted_class": "WILDFIRE_CONFIRMED",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-WFIGS-WF-TX-KIDD-20220318",
+            "true_class": "WILDFIRE_CONFIRMED",
+            "obs_count": 183,
+            "mean_predicted_prob_wf": 0.9654,
+            "predicted_class": "WILDFIRE_CONFIRMED",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-WFIGS-WF-TX-SMOKE-STACK-20220503",
+            "true_class": "WILDFIRE_CONFIRMED",
+            "obs_count": 135,
+            "mean_predicted_prob_wf": 0.7146,
+            "predicted_class": "WILDFIRE_CONFIRMED",
+            "correct": true
+          }
+        ]
+      }
+    },
+    "xgboost_classifier": {
+      "observation_metrics": {
+        "accuracy": 0.9684,
+        "macro_f1": 0.9012,
+        "roc_auc": 0.9851,
+        "flare_pr_auc": 0.9465,
+        "flare_prevalence": 0.0761,
+        "wildfire_pr_auc": 0.9986,
+        "wildfire_prevalence": 0.9239,
+        "flare": {
+          "precision": 0.7246,
+          "recall": 0.9434,
+          "f1": 0.8197,
+          "support": 53
+        },
+        "wildfire": {
+          "precision": 0.9952,
+          "recall": 0.9705,
+          "f1": 0.9827,
+          "support": 643
+        },
+        "confusion_matrix": {
+          "true_negative_flare": 50,
+          "false_positive_wildfire": 3,
+          "false_negative_flare": 19,
+          "true_positive_wildfire": 624
+        }
+      },
+      "event_metrics": {
+        "event_macro_f1": 0.9353,
+        "flare_event_recall_ratio": "33/35",
+        "flare_event_recall": 0.9429,
+        "wildfire_event_recall_ratio": "9/9",
+        "wildfire_event_recall": 1.0,
+        "flare": {
+          "precision": 1.0,
+          "recall": 0.9429,
+          "f1": 0.9706,
+          "support": 35
+        },
+        "wildfire": {
+          "precision": 0.8182,
+          "recall": 1.0,
+          "f1": 0.9,
+          "support": 9
+        },
+        "event_confusion_matrix": {
+          "true_negative_flare_events": 33,
+          "false_positive_wildfire_events": 2,
+          "false_negative_flare_events": 0,
+          "true_positive_wildfire_events": 9
+        },
+        "event_predictions": [
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260102",
+            "true_class": "GAS_FLARE",
+            "obs_count": 2,
+            "mean_predicted_prob_wf": 0.0731,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260103",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.386,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260117",
+            "true_class": "GAS_FLARE",
+            "obs_count": 4,
+            "mean_predicted_prob_wf": 0.0294,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260123",
+            "true_class": "GAS_FLARE",
+            "obs_count": 3,
+            "mean_predicted_prob_wf": 0.3387,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260124",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.9887,
+            "predicted_class": "WILDFIRE_CONFIRMED",
+            "correct": false
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260129",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0436,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260209",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0145,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260213",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0176,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260220",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.026,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260301",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0132,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260324",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0274,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260331",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0091,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260414",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0184,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260106",
+            "true_class": "GAS_FLARE",
+            "obs_count": 2,
+            "mean_predicted_prob_wf": 0.0836,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260107",
+            "true_class": "GAS_FLARE",
+            "obs_count": 3,
+            "mean_predicted_prob_wf": 0.0772,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260108",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0666,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260112",
+            "true_class": "GAS_FLARE",
+            "obs_count": 3,
+            "mean_predicted_prob_wf": 0.0204,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260113",
+            "true_class": "GAS_FLARE",
+            "obs_count": 2,
+            "mean_predicted_prob_wf": 0.022,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260115",
+            "true_class": "GAS_FLARE",
+            "obs_count": 2,
+            "mean_predicted_prob_wf": 0.0314,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260126",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.1555,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260129",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.013,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260130",
+            "true_class": "GAS_FLARE",
+            "obs_count": 3,
+            "mean_predicted_prob_wf": 0.6391,
+            "predicted_class": "WILDFIRE_CONFIRMED",
+            "correct": false
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260212",
+            "true_class": "GAS_FLARE",
+            "obs_count": 3,
+            "mean_predicted_prob_wf": 0.2567,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260301",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0171,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260303",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0137,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260304",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0168,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260306",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.026,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260311",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0193,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260313",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0172,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260317",
+            "true_class": "GAS_FLARE",
+            "obs_count": 2,
+            "mean_predicted_prob_wf": 0.0169,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260326",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0133,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260327",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0076,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260331",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0091,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260408",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0137,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260409",
+            "true_class": "GAS_FLARE",
+            "obs_count": 1,
+            "mean_predicted_prob_wf": 0.0274,
+            "predicted_class": "GAS_FLARE",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-WFIGS-WF-AZ-BOTTOM-20210629",
+            "true_class": "WILDFIRE_CONFIRMED",
+            "obs_count": 50,
+            "mean_predicted_prob_wf": 0.9177,
+            "predicted_class": "WILDFIRE_CONFIRMED",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-WFIGS-WF-CO-MARSHALL-20211230",
+            "true_class": "WILDFIRE_CONFIRMED",
+            "obs_count": 76,
+            "mean_predicted_prob_wf": 0.9805,
+            "predicted_class": "WILDFIRE_CONFIRMED",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-WFIGS-WF-ID-TWO-AND-HALF-20220909",
+            "true_class": "WILDFIRE_CONFIRMED",
+            "obs_count": 111,
+            "mean_predicted_prob_wf": 0.9062,
+            "predicted_class": "WILDFIRE_CONFIRMED",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-WFIGS-WF-ID-WILDHORSE-20220905",
+            "true_class": "WILDFIRE_CONFIRMED",
+            "obs_count": 38,
+            "mean_predicted_prob_wf": 0.9162,
+            "predicted_class": "WILDFIRE_CONFIRMED",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-WFIGS-WF-MT-GASS-FLATS-20200924",
+            "true_class": "WILDFIRE_CONFIRMED",
+            "obs_count": 27,
+            "mean_predicted_prob_wf": 0.9441,
+            "predicted_class": "WILDFIRE_CONFIRMED",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-WFIGS-WF-NM-HERMITS-PEAK-20220410",
+            "true_class": "WILDFIRE_CONFIRMED",
+            "obs_count": 13,
+            "mean_predicted_prob_wf": 0.9927,
+            "predicted_class": "WILDFIRE_CONFIRMED",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-WFIGS-WF-TX-CANADIAN-RIVER-20220330",
+            "true_class": "WILDFIRE_CONFIRMED",
+            "obs_count": 10,
+            "mean_predicted_prob_wf": 0.9895,
+            "predicted_class": "WILDFIRE_CONFIRMED",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-WFIGS-WF-TX-KIDD-20220318",
+            "true_class": "WILDFIRE_CONFIRMED",
+            "obs_count": 183,
+            "mean_predicted_prob_wf": 0.9652,
+            "predicted_class": "WILDFIRE_CONFIRMED",
+            "correct": true
+          },
+          {
+            "event_id": "EVT-WFIGS-WF-TX-SMOKE-STACK-20220503",
+            "true_class": "WILDFIRE_CONFIRMED",
+            "obs_count": 135,
+            "mean_predicted_prob_wf": 0.838,
+            "predicted_class": "WILDFIRE_CONFIRMED",
+            "correct": true
+          }
+        ]
+      }
+    }
+  },
+  "leakage_audit": {
+    "prohibited_features_verified_absent": true,
+    "train_test_event_overlap": 0,
+    "cedar_creek_test_wildfire_fraction": 0.8333,
+    "target_encoding": {
+      "GAS_FLARE": 0,
+      "WILDFIRE_CONFIRMED": 1
+    },
+    "sample_weights_source": "TRAINING_DATA_ONLY"
+  },
+  "model_decision": {
+    "classification": "RETAIN_AS_EXPERIMENTAL",
+    "operational_recommendation": "Maintain frozen Logistic Regression (lr-v5f3-standardized) as operational advisory model. Retain XGBoost as an offline experimental challenger benchmark.",
+    "rationale": [
+      "XGBoost demonstrates high discriminative performance on the controlled test split (Macro F1 0.941 vs LR 0.902), correctly classifying 20/20 flare events and 4/4 wildfire events.",
+      "However, on the cross-geographic holdout partition (evaluating unseen wildfire biomes in the Rockies/Plains), XGBoost experiences a non-trivial performance drop comparable to other tree models, reflecting sensitivity to localized biome radiative distributions.",
+      "The test wildfire partition is 99.4% dominated by a single incident (Cedar Creek Fire, 829/834 obs), meaning observation-level scores reflect single-event memorization risk.",
+      "Linear Logistic Regression provides fully transparent, auditable feature weights with monotone interpretability for human investigators without opaque tree splits.",
+      "Per Phase 6.1 and 6.2 governance, production architecture remains fixed on frozen LR."
+    ]
+  }
+}

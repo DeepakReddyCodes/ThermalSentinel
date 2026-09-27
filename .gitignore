@@ -1,0 +1,49 @@
+# Dependencies
+node_modules/
+
+# Build / generated output
+dist/
+build/
+coverage/
+*.tsbuildinfo
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+logs/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+
+# IDE / editor
+.vscode/
+.idea/
+*.swp
+*.swo
+.antigravity/
+
+# OS / temporary
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.tmp
+*.temp
+
+# Testing / cache / scratch
+.pytest_cache/
+.mypy_cache/
+scratch/
+
+# Local databases / artifacts
+*.sqlite
+*.sqlite3
+*.zip

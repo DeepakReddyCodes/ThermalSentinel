@@ -1,0 +1,137 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ThermalSourceDiscriminatorOutput",
+  "description": "Schema for the experimental advisory thermal source discriminator score in ThermalSentinel.",
+  "type": "object",
+  "required": [
+    "status",
+    "model_version",
+    "evaluation_level",
+    "timestamp"
+  ],
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": [
+        "AVAILABLE",
+        "NOT_ASSESSED",
+        "INVALID_INPUT",
+        "OUT_OF_SCOPE"
+      ],
+      "description": "Evaluation status of the experimental discriminator."
+    },
+    "model_version": {
+      "type": "string",
+      "description": "Semantic version of the audited model artifact, e.g. lr-v5f3-standardized."
+    },
+    "evaluation_level": {
+      "type": "string",
+      "enum": [
+        "OBSERVATION",
+        "EVENT_AGGREGATE"
+      ],
+      "description": "Whether this score applies to an individual pixel detection or an aggregated event group."
+    },
+    "task": {
+      "type": "string",
+      "enum": [
+        "GAS_FLARE_VS_WILDFIRE_CONFIRMED"
+      ],
+      "default": "GAS_FLARE_VS_WILDFIRE_CONFIRMED",
+      "description": "The frozen binary classification task on which the model was trained."
+    },
+    "predicted_class": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "GAS_FLARE",
+        "WILDFIRE_CONFIRMED",
+        null
+      ],
+      "description": "Advisory binary class favoring, or null if NOT_ASSESSED."
+    },
+    "wildfire_score": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0.0,
+      "maximum": 1.0,
+      "description": "Model-estimated conditional probability of WILDFIRE_CONFIRMED within the binary task (null if NOT_ASSESSED)."
+    },
+    "flare_score": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0.0,
+      "maximum": 1.0,
+      "description": "Model-estimated conditional probability of GAS_FLARE (1 - wildfire_score) within the binary task (null if NOT_ASSESSED)."
+    },
+    "decision_threshold": {
+      "type": "number",
+      "default": 0.5,
+      "description": "Experimental decision threshold applied (marked REQUIRES_OPERATIONAL_CALIBRATION)."
+    },
+    "threshold_status": {
+      "type": "string",
+      "enum": [
+        "EXPERIMENTAL_UNVALIDATED",
+        "OPERATIONAL_CALIBRATED"
+      ],
+      "default": "EXPERIMENTAL_UNVALIDATED"
+    },
+    "interpretation": {
+      "type": "string",
+      "description": "Human-readable advisory explanation strictly bounded to binary likelihood."
+    },
+    "evidence_basis": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of input features utilized in this evaluation."
+    },
+    "input_features_evaluated": {
+      "type": "object",
+      "properties": {
+        "log_frp": {
+          "type": "number"
+        },
+        "brightness_ti4": {
+          "type": "number"
+        },
+        "brightness_ti5": {
+          "type": "number"
+        },
+        "brightness_delta": {
+          "type": "number"
+        },
+        "scan": {
+          "type": "number"
+        },
+        "track": {
+          "type": "number"
+        },
+        "is_day": {
+          "type": "number"
+        }
+      },
+      "additionalProperties": false
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Explicit notices of model bounds and unsupported classes."
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "additionalProperties": false
+}

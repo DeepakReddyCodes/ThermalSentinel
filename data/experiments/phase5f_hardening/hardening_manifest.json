@@ -1,0 +1,126 @@
+{
+  "manifest_version": "1.0.0",
+  "date": "2026-09-11",
+  "phase": "Phase 5F.3 \u2014 Controlled Model Hardening Execution",
+  "dataset_version": "ThermalSentinel-Training-Candidates-v4-Diverse",
+  "raw_csv_path": "data/training_v4/training_candidates_v4.csv",
+  "total_eligible_instances": 2983,
+  "flaring_instances": 155,
+  "wildfire_instances": 2828,
+  "flaring_event_groups": 105,
+  "wildfire_event_groups": 17,
+  "split_policy": "Strict Group-Preserved Partitioning (Zero Event Overlap)",
+  "split_manifest": {
+    "train_events": 75,
+    "val_events": 23,
+    "test_events": 24,
+    "train_obs": 1503,
+    "val_obs": 615,
+    "test_obs": 865
+  },
+  "feature_sets": {
+    "primary_features": [
+      "log_frp",
+      "brightness_ti4",
+      "brightness_ti5",
+      "brightness_delta",
+      "scan",
+      "track",
+      "is_day"
+    ],
+    "night_only_features": [
+      "log_frp",
+      "brightness_ti4",
+      "brightness_ti5",
+      "brightness_delta",
+      "scan",
+      "track"
+    ],
+    "without_is_day_features": [
+      "log_frp",
+      "brightness_ti4",
+      "brightness_ti5",
+      "brightness_delta",
+      "scan",
+      "track"
+    ],
+    "without_brightness_delta_features": [
+      "log_frp",
+      "brightness_ti4",
+      "brightness_ti5",
+      "scan",
+      "track",
+      "is_day"
+    ],
+    "without_frp_features": [
+      "brightness_ti4",
+      "brightness_ti5",
+      "brightness_delta",
+      "scan",
+      "track",
+      "is_day"
+    ],
+    "strictly_prohibited_attributes": [
+      "latitude",
+      "longitude",
+      "country",
+      "state",
+      "geographic_region",
+      "year",
+      "month",
+      "day",
+      "acq_datetime",
+      "facility_id",
+      "dist_to_facility",
+      "is_inside_facility",
+      "dist_to_observed_thermal_zone",
+      "external_source",
+      "external_record_id",
+      "spatial_match_distance",
+      "temporal_match_difference",
+      "label_tier",
+      "label_status",
+      "exclusion_reason"
+    ]
+  },
+  "model_configurations": {
+    "logistic_regression": {
+      "penalty": "l2",
+      "C": 1.0,
+      "solver": "lbfgs",
+      "class_weight": "balanced",
+      "max_iter": 1000,
+      "random_state": 42,
+      "scaling": "StandardScaler (fitted on TRAIN only)"
+    },
+    "decision_tree_d3": {
+      "max_depth": 3,
+      "criterion": "gini",
+      "class_weight": "balanced",
+      "random_state": 42,
+      "scaling": "Unscaled"
+    },
+    "random_forest_d4": {
+      "n_estimators": 100,
+      "max_depth": 4,
+      "max_features": "sqrt",
+      "class_weight": "balanced",
+      "random_state": 42,
+      "scaling": "Unscaled"
+    }
+  },
+  "evaluation_methodology": {
+    "observation_metrics": [
+      "macro_f1",
+      "roc_auc",
+      "flare_pr_auc",
+      "wildfire_pr_auc",
+      "precision",
+      "recall",
+      "confusion_matrix"
+    ],
+    "event_aggregation": "Mean observation probability per physical event group; threshold = 0.5",
+    "prevalence_reporting": "Mandatory reporting of minority class prevalence alongside PR-AUC",
+    "denominator_reporting": "Mandatory ratio format (e.g. 19/20) for all event-level metrics"
+  }
+}

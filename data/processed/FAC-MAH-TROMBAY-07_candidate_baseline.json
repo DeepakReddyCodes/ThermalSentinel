@@ -1,0 +1,43 @@
+{
+  "facility_id": "FAC-MAH-TROMBAY-07",
+  "facility_name": "Mumbai Trombay Refinery Complex",
+  "baseline_status": "LIMITED",
+  "minimum_threshold_required": 30,
+  "provenance": "REAL_NASA_FIRMS",
+  "provenance_type": "LIMITED_PILOT",
+  "population_scope": "FACILITY_ASSOCIATED",
+  "baseline_period": {
+    "start_date": "2026-03-21",
+    "end_date": "2026-03-21",
+    "total_days": 115
+  },
+  "metrics": {
+    "observation_count": 3,
+    "observation_days": 1,
+    "observations_per_day": 3,
+    "frp_median": 11.36,
+    "frp_p25": 11.03,
+    "frp_p75": 11.36,
+    "frp_p90": 11.36,
+    "frp_p95": 11.36,
+    "frp_max": 11.36,
+    "frp_iqr": 0.33,
+    "frp_mad": 0
+  },
+  "diurnal": {
+    "day_count": 3,
+    "night_count": 0,
+    "day_pct": 100,
+    "night_pct": 0,
+    "hour_distribution": []
+  },
+  "spatial_distribution": {
+    "known_zone_count": 0,
+    "off_zone_count": 3,
+    "buffer_count": 0,
+    "zones": []
+  },
+  "temporal_frequency": 0.01,
+  "persistence_classification": "SINGLE_OBSERVATION",
+  "created_at": "2026-09-27T06:35:46.426Z"
+}

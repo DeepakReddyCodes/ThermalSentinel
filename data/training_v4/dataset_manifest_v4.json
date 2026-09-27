@@ -1,0 +1,25 @@
+{
+  "manifest_version": "v4.0.0",
+  "generated_at": "2026-09-10T18:03:33.825582+00:00",
+  "dataset_name": "ThermalSentinel-Training-Candidates-v4-Diverse",
+  "audit_phase": "Phase 5E \u2014 Wildfire Event Diversity Expansion",
+  "status": "DATASET CONSTRUCTED \u2014 EVENT DIVERSITY CRITERION MET",
+  "artifacts_and_checksums": {
+    "csv_file": "training_candidates_v4.csv",
+    "csv_sha256": "cb50177cd81fb9720e0f605fbd08112d2dd2db38fe63753846e3c1cc4601211f",
+    "csv_bytes": 2136323,
+    "json_file": "training_candidates_v4.json",
+    "json_sha256": "fb932c1e63ddeb86f8e2508792ec06a7ef907de72248fd9e9374a47b4f1b4f8a",
+    "audit_file": "independent_label_match_audit_v4.json",
+    "audit_sha256": "9d7f092ef00fde8bbf3426e6cf909f0ed19dd2f31ef8fabcd8f5401e5383a986"
+  },
+  "inventory": {
+    "total_observations": 3770,
+    "usable_supervised_instances": 2983,
+    "usable_flaring_instances": 155,
+    "usable_wildfire_instances": 2828,
+    "usable_flaring_events": 105,
+    "usable_wildfire_events": 17,
+    "total_excluded_instances": 787
+  }
+}

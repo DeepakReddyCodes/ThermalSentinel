@@ -1,0 +1,179 @@
+{
+  "model_id": "lr-v5f3-standardized",
+  "model_version": "1.0.0",
+  "model_type": "Standardized L2-Regularized Logistic Regression (C=1.0, balanced)",
+  "task": "GAS_FLARE_VS_WILDFIRE_CONFIRMED",
+  "supported_classes": [
+    "GAS_FLARE",
+    "WILDFIRE_CONFIRMED"
+  ],
+  "intercept": 3.160197,
+  "coefficients": [
+    0.5152,
+    1.388,
+    -1.3859,
+    2.5317,
+    -0.043,
+    0.5107,
+    0.479
+  ],
+  "feature_names": [
+    "log_frp",
+    "brightness_ti4",
+    "brightness_ti5",
+    "brightness_delta",
+    "scan",
+    "track",
+    "is_day"
+  ],
+  "feature_labels": {
+    "log_frp": "log(1 + FRP) (MW)",
+    "brightness_ti4": "VIIRS TI4 Brightness (K)",
+    "brightness_ti5": "VIIRS TI5 Brightness (K)",
+    "brightness_delta": "ΔBrightness TI4 - TI5 (K)",
+    "scan": "Scan Angle / Footprint (km)",
+    "track": "Track Dimension (km)",
+    "is_day": "Diurnal Flag (Day=1, Night=0)"
+  },
+  "preprocessing": {
+    "means": [
+      1.761003,
+      322.96643,
+      292.015971,
+      30.950459,
+      0.456618,
+      0.51357,
+      0.143354
+    ],
+    "scales": [
+      1.017572,
+      21.651596,
+      10.528108,
+      17.63324,
+      0.076592,
+      0.118073,
+      0.350434
+    ]
+  },
+  "training_dataset": {
+    "name": "ThermalSentinel-Training-Candidates-v4-Diverse",
+    "csv_file": "training_candidates_v4.csv",
+    "total_eligible_instances": 2983,
+    "flaring_instances": 155,
+    "wildfire_instances": 2828,
+    "total_events": 122,
+    "split_policy": "Strict Group-Preserved Partitioning (Zero Event Overlap)"
+  },
+  "evaluation_metrics": {
+    "train": {
+      "total_obs": 1437,
+      "flare_obs": 135,
+      "wildfire_obs": 1302,
+      "flare_prevalence_pct": 9.39,
+      "total_events": 97,
+      "flare_events": 87,
+      "wildfire_events": 10,
+      "accuracy": 0.8156,
+      "precision_flare": 0.335,
+      "recall_flare": 0.9778,
+      "f1_flare": 0.4991,
+      "precision_wildfire": 0.9971,
+      "recall_wildfire": 0.7988,
+      "f1_wildfire": 0.887,
+      "macro_f1": 0.693,
+      "roc_auc": 0.9531,
+      "pr_auc_flare": 0.6007,
+      "pr_auc_wildfire": 0.995,
+      "confusion_matrix": {
+        "true_flares_as_flare": 132,
+        "true_flares_as_wildfire": 3,
+        "true_wildfires_as_wildfire": 1040,
+        "true_wildfires_as_flare": 262
+      },
+      "event_level": {
+        "flare_events_correct": 85,
+        "flare_events_total": 87,
+        "wildfire_events_correct": 10,
+        "wildfire_events_total": 10,
+        "event_accuracy": 0.9794,
+        "event_macro_f1": 0.9885
+      }
+    },
+    "validation": {
+      "total_obs": 657,
+      "flare_obs": 15,
+      "wildfire_obs": 642,
+      "flare_prevalence_pct": 2.28,
+      "total_events": 15,
+      "flare_events": 13,
+      "wildfire_events": 2,
+      "accuracy": 0.9878,
+      "precision_flare": 0.6522,
+      "recall_flare": 1,
+      "f1_flare": 0.7895,
+      "precision_wildfire": 1,
+      "recall_wildfire": 0.9875,
+      "f1_wildfire": 0.9937,
+      "macro_f1": 0.8916,
+      "roc_auc": 0.9969,
+      "pr_auc_flare": 0.7414,
+      "pr_auc_wildfire": 0.9999,
+      "confusion_matrix": {
+        "true_flares_as_flare": 15,
+        "true_flares_as_wildfire": 0,
+        "true_wildfires_as_wildfire": 634,
+        "true_wildfires_as_flare": 8
+      },
+      "event_level": {
+        "flare_events_correct": 13,
+        "flare_events_total": 13,
+        "wildfire_events_correct": 2,
+        "wildfire_events_total": 2,
+        "event_accuracy": 1,
+        "event_macro_f1": 1
+      }
+    },
+    "test": {
+      "total_obs": 889,
+      "flare_obs": 5,
+      "wildfire_obs": 884,
+      "flare_prevalence_pct": 0.56,
+      "total_events": 10,
+      "flare_events": 5,
+      "wildfire_events": 5,
+      "accuracy": 0.8099,
+      "precision_flare": 0.0287,
+      "recall_flare": 1,
+      "f1_flare": 0.0559,
+      "precision_wildfire": 1,
+      "recall_wildfire": 0.8088,
+      "f1_wildfire": 0.8943,
+      "macro_f1": 0.4751,
+      "roc_auc": 0.995,
+      "pr_auc_flare": 0.3848,
+      "pr_auc_wildfire": 1,
+      "confusion_matrix": {
+        "true_flares_as_flare": 5,
+        "true_flares_as_wildfire": 0,
+        "true_wildfires_as_wildfire": 715,
+        "true_wildfires_as_flare": 169
+      },
+      "event_level": {
+        "flare_events_correct": 5,
+        "flare_events_total": 5,
+        "wildfire_events_correct": 5,
+        "wildfire_events_total": 5,
+        "event_accuracy": 1,
+        "event_macro_f1": 1
+      }
+    }
+  },
+  "limitations": [
+    "Advisory only — trained exclusively on binary task: Gas Flare vs. Confirmed Wildfire.",
+    "Does not model structural industrial fires, agricultural residue burns, or urban sources.",
+    "Uncontained industrial fires outside continuous flare stacks fall outside the binary training domain.",
+    "Output represents normalized linear logit heuristic support, NOT a calibrated event probability.",
+    "Does not override spatial association, facility behavioural baseline, or investigation priority."
+  ],
+  "trained_at": "2026-09-23T15:26:14.020Z"
+}

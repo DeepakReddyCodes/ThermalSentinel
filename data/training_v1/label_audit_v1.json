@@ -1,0 +1,442 @@
+{
+  "audit_title": "ThermalSentinel Phase 5B Label Quality and Sample Audit",
+  "audit_timestamp": "2026-09-10T16:40:11.871Z",
+  "total_observations_audited": 294,
+  "usable_training_observations": 155,
+  "usable_unique_events": 105,
+  "summary_by_status": {
+    "MATCHED": 155,
+    "WEAK_MATCH": 29,
+    "AMBIGUOUS": 1,
+    "UNMATCHED": 109,
+    "TOTAL_EXCLUDED": 139
+  },
+  "label_tier_distribution": {
+    "TIER_1": 0,
+    "TIER_2": 155,
+    "TIER_3": 29,
+    "TIER_4": 110
+  },
+  "samples": [
+    {
+      "sample_index": 1,
+      "firms_id": "FIRMS-NOAA-20-20260101-2132-1",
+      "event_group_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260101",
+      "acq_datetime": "2026-01-01T21:32:00Z",
+      "firms_location": [
+        22.33776,
+        69.86501
+      ],
+      "satellite": "NOAA-20",
+      "frp": 2.06,
+      "external_target_id": "EOG-FLARE-JAM-SOUTH-E",
+      "external_source": "EOG_GLOBAL_GAS_FLARING_CATALOG_2024",
+      "spatial_distance_meters": 165,
+      "temporal_match_diff": "WITHIN_CONTINUOUS_OPERATIONAL_CATALOG_WINDOW_2026",
+      "label_assigned": "GAS_FLARE",
+      "label_tier": "TIER_2",
+      "label_status": "MATCHED",
+      "split_assignment": "TRAIN",
+      "defensibility_audit": "Passed strict elliptical footprint match (D <= 1.0) with verified EOG Global Flare Catalog persistent stack centroid."
+    },
+    {
+      "sample_index": 2,
+      "firms_id": "FIRMS-NOAA-20-20260101-2132-2",
+      "event_group_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260101",
+      "acq_datetime": "2026-01-01T21:32:00Z",
+      "firms_location": [
+        22.34003,
+        69.85408
+      ],
+      "satellite": "NOAA-20",
+      "frp": 2.4,
+      "external_target_id": "EOG-FLARE-JAM-SOUTH-W",
+      "external_source": "EOG_GLOBAL_GAS_FLARING_CATALOG_2024",
+      "spatial_distance_meters": 122,
+      "temporal_match_diff": "WITHIN_CONTINUOUS_OPERATIONAL_CATALOG_WINDOW_2026",
+      "label_assigned": "GAS_FLARE",
+      "label_tier": "TIER_2",
+      "label_status": "MATCHED",
+      "split_assignment": "TRAIN",
+      "defensibility_audit": "Passed strict elliptical footprint match (D <= 1.0) with verified EOG Global Flare Catalog persistent stack centroid."
+    },
+    {
+      "sample_index": 3,
+      "firms_id": "FIRMS-NOAA-20-20260102-2114-3",
+      "event_group_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260102",
+      "acq_datetime": "2026-01-02T21:14:00Z",
+      "firms_location": [
+        22.33659,
+        69.86806
+      ],
+      "satellite": "NOAA-20",
+      "frp": 2.32,
+      "external_target_id": "EOG-FLARE-JAM-SOUTH-E",
+      "external_source": "EOG_GLOBAL_GAS_FLARING_CATALOG_2024",
+      "spatial_distance_meters": 174,
+      "temporal_match_diff": "WITHIN_CONTINUOUS_OPERATIONAL_CATALOG_WINDOW_2026",
+      "label_assigned": "GAS_FLARE",
+      "label_tier": "TIER_2",
+      "label_status": "MATCHED",
+      "split_assignment": "TRAIN",
+      "defensibility_audit": "Passed strict elliptical footprint match (D <= 1.0) with verified EOG Global Flare Catalog persistent stack centroid."
+    },
+    {
+      "sample_index": 4,
+      "firms_id": "FIRMS-NOAA-20-20260102-2114-4",
+      "event_group_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260102",
+      "acq_datetime": "2026-01-02T21:14:00Z",
+      "firms_location": [
+        22.33897,
+        69.85476
+      ],
+      "satellite": "NOAA-20",
+      "frp": 2.19,
+      "external_target_id": "EOG-FLARE-JAM-SOUTH-W",
+      "external_source": "EOG_GLOBAL_GAS_FLARING_CATALOG_2024",
+      "spatial_distance_meters": 27,
+      "temporal_match_diff": "WITHIN_CONTINUOUS_OPERATIONAL_CATALOG_WINDOW_2026",
+      "label_assigned": "GAS_FLARE",
+      "label_tier": "TIER_2",
+      "label_status": "MATCHED",
+      "split_assignment": "TRAIN",
+      "defensibility_audit": "Passed strict elliptical footprint match (D <= 1.0) with verified EOG Global Flare Catalog persistent stack centroid."
+    },
+    {
+      "sample_index": 5,
+      "firms_id": "FIRMS-NOAA-20-20260103-2055-5",
+      "event_group_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260103",
+      "acq_datetime": "2026-01-03T20:55:00Z",
+      "firms_location": [
+        22.33772,
+        69.86539
+      ],
+      "satellite": "NOAA-20",
+      "frp": 2.56,
+      "external_target_id": "EOG-FLARE-JAM-SOUTH-E",
+      "external_source": "EOG_GLOBAL_GAS_FLARING_CATALOG_2024",
+      "spatial_distance_meters": 128,
+      "temporal_match_diff": "WITHIN_CONTINUOUS_OPERATIONAL_CATALOG_WINDOW_2026",
+      "label_assigned": "GAS_FLARE",
+      "label_tier": "TIER_2",
+      "label_status": "MATCHED",
+      "split_assignment": "TRAIN",
+      "defensibility_audit": "Passed strict elliptical footprint match (D <= 1.0) with verified EOG Global Flare Catalog persistent stack centroid."
+    },
+    {
+      "sample_index": 6,
+      "firms_id": "FIRMS-NOAA-20-20260103-2055-6",
+      "event_group_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260103",
+      "acq_datetime": "2026-01-03T20:55:00Z",
+      "firms_location": [
+        22.33944,
+        69.85391
+      ],
+      "satellite": "NOAA-20",
+      "frp": 2.6,
+      "external_target_id": "EOG-FLARE-JAM-SOUTH-W",
+      "external_source": "EOG_GLOBAL_GAS_FLARING_CATALOG_2024",
+      "spatial_distance_meters": 78,
+      "temporal_match_diff": "WITHIN_CONTINUOUS_OPERATIONAL_CATALOG_WINDOW_2026",
+      "label_assigned": "GAS_FLARE",
+      "label_tier": "TIER_2",
+      "label_status": "MATCHED",
+      "split_assignment": "TRAIN",
+      "defensibility_audit": "Passed strict elliptical footprint match (D <= 1.0) with verified EOG Global Flare Catalog persistent stack centroid."
+    },
+    {
+      "sample_index": 7,
+      "firms_id": "FIRMS-NOAA-20-20260104-2036-7",
+      "event_group_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260104",
+      "acq_datetime": "2026-01-04T20:36:00Z",
+      "firms_location": [
+        22.3375,
+        69.86691
+      ],
+      "satellite": "NOAA-20",
+      "frp": 2.06,
+      "external_target_id": "EOG-FLARE-JAM-SOUTH-E",
+      "external_source": "EOG_GLOBAL_GAS_FLARING_CATALOG_2024",
+      "spatial_distance_meters": 54,
+      "temporal_match_diff": "WITHIN_CONTINUOUS_OPERATIONAL_CATALOG_WINDOW_2026",
+      "label_assigned": "GAS_FLARE",
+      "label_tier": "TIER_2",
+      "label_status": "MATCHED",
+      "split_assignment": "TRAIN",
+      "defensibility_audit": "Passed strict elliptical footprint match (D <= 1.0) with verified EOG Global Flare Catalog persistent stack centroid."
+    },
+    {
+      "sample_index": 8,
+      "firms_id": "FIRMS-NOAA-20-20260104-2036-8",
+      "event_group_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260104",
+      "acq_datetime": "2026-01-04T20:36:00Z",
+      "firms_location": [
+        22.33896,
+        69.85427
+      ],
+      "satellite": "NOAA-20",
+      "frp": 1.99,
+      "external_target_id": "EOG-FLARE-JAM-SOUTH-W",
+      "external_source": "EOG_GLOBAL_GAS_FLARING_CATALOG_2024",
+      "spatial_distance_meters": 24,
+      "temporal_match_diff": "WITHIN_CONTINUOUS_OPERATIONAL_CATALOG_WINDOW_2026",
+      "label_assigned": "GAS_FLARE",
+      "label_tier": "TIER_2",
+      "label_status": "MATCHED",
+      "split_assignment": "TRAIN",
+      "defensibility_audit": "Passed strict elliptical footprint match (D <= 1.0) with verified EOG Global Flare Catalog persistent stack centroid."
+    },
+    {
+      "sample_index": 9,
+      "firms_id": "FIRMS-NOAA-20-20260106-2139-10",
+      "event_group_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260106",
+      "acq_datetime": "2026-01-06T21:39:00Z",
+      "firms_location": [
+        22.33626,
+        69.8646
+      ],
+      "satellite": "NOAA-20",
+      "frp": 2.21,
+      "external_target_id": "EOG-FLARE-JAM-SOUTH-E",
+      "external_source": "EOG_GLOBAL_GAS_FLARING_CATALOG_2024",
+      "spatial_distance_meters": 222,
+      "temporal_match_diff": "WITHIN_CONTINUOUS_OPERATIONAL_CATALOG_WINDOW_2026",
+      "label_assigned": "GAS_FLARE",
+      "label_tier": "TIER_2",
+      "label_status": "MATCHED",
+      "split_assignment": "TRAIN",
+      "defensibility_audit": "Passed strict elliptical footprint match (D <= 1.0) with verified EOG Global Flare Catalog persistent stack centroid."
+    },
+    {
+      "sample_index": 10,
+      "firms_id": "FIRMS-NOAA-20-20260106-2139-11",
+      "event_group_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260106",
+      "acq_datetime": "2026-01-06T21:39:00Z",
+      "firms_location": [
+        22.33853,
+        69.8543
+      ],
+      "satellite": "NOAA-20",
+      "frp": 2.35,
+      "external_target_id": "EOG-FLARE-JAM-SOUTH-W",
+      "external_source": "EOG_GLOBAL_GAS_FLARING_CATALOG_2024",
+      "spatial_distance_meters": 56,
+      "temporal_match_diff": "WITHIN_CONTINUOUS_OPERATIONAL_CATALOG_WINDOW_2026",
+      "label_assigned": "GAS_FLARE",
+      "label_tier": "TIER_2",
+      "label_status": "MATCHED",
+      "split_assignment": "TRAIN",
+      "defensibility_audit": "Passed strict elliptical footprint match (D <= 1.0) with verified EOG Global Flare Catalog persistent stack centroid."
+    },
+    {
+      "sample_index": 11,
+      "firms_id": "FIRMS-NOAA-20-20260108-2101-19",
+      "event_group_id": "EVT-WEAK-EOG-FLARE-JAM-SOUTH-W-20260108",
+      "acq_datetime": "2026-01-08T21:01:00Z",
+      "firms_location": [
+        22.34125,
+        69.85561
+      ],
+      "satellite": "NOAA-20",
+      "frp": 2.38,
+      "external_target_id": "EOG-FLARE-JAM-SOUTH-W",
+      "external_source": "EOG_GLOBAL_GAS_FLARING_CATALOG_2024",
+      "spatial_distance_meters": 275,
+      "temporal_match_diff": "WITHIN_CONTINUOUS_OPERATIONAL_CATALOG_WINDOW_2026",
+      "label_assigned": "GAS_FLARE",
+      "label_tier": "TIER_3",
+      "label_status": "WEAK_MATCH",
+      "split_assignment": "EXCLUDED_FROM_SPLIT",
+      "defensibility_audit": "Near-footprint boundary zone (1.0 < D <= 1.5). Downgraded to TIER_3 and excluded from training targets to prevent label contamination."
+    },
+    {
+      "sample_index": 12,
+      "firms_id": "FIRMS-NOAA-20-20260109-2042-22",
+      "event_group_id": "EVT-WEAK-EOG-FLARE-JAM-SOUTH-W-20260109",
+      "acq_datetime": "2026-01-09T20:42:00Z",
+      "firms_location": [
+        22.34186,
+        69.85538
+      ],
+      "satellite": "NOAA-20",
+      "frp": 1.59,
+      "external_target_id": "EOG-FLARE-JAM-SOUTH-W",
+      "external_source": "EOG_GLOBAL_GAS_FLARING_CATALOG_2024",
+      "spatial_distance_meters": 330,
+      "temporal_match_diff": "WITHIN_CONTINUOUS_OPERATIONAL_CATALOG_WINDOW_2026",
+      "label_assigned": "GAS_FLARE",
+      "label_tier": "TIER_3",
+      "label_status": "WEAK_MATCH",
+      "split_assignment": "EXCLUDED_FROM_SPLIT",
+      "defensibility_audit": "Near-footprint boundary zone (1.0 < D <= 1.5). Downgraded to TIER_3 and excluded from training targets to prevent label contamination."
+    },
+    {
+      "sample_index": 13,
+      "firms_id": "FIRMS-NOAA-20-20260110-2023-23",
+      "event_group_id": "EVT-WEAK-EOG-FLARE-JAM-SOUTH-E-20260110",
+      "acq_datetime": "2026-01-10T20:23:00Z",
+      "firms_location": [
+        22.33569,
+        69.86403
+      ],
+      "satellite": "NOAA-20",
+      "frp": 1.74,
+      "external_target_id": "EOG-FLARE-JAM-SOUTH-E",
+      "external_source": "EOG_GLOBAL_GAS_FLARING_CATALOG_2024",
+      "spatial_distance_meters": 304,
+      "temporal_match_diff": "WITHIN_CONTINUOUS_OPERATIONAL_CATALOG_WINDOW_2026",
+      "label_assigned": "GAS_FLARE",
+      "label_tier": "TIER_3",
+      "label_status": "WEAK_MATCH",
+      "split_assignment": "EXCLUDED_FROM_SPLIT",
+      "defensibility_audit": "Near-footprint boundary zone (1.0 < D <= 1.5). Downgraded to TIER_3 and excluded from training targets to prevent label contamination."
+    },
+    {
+      "sample_index": 14,
+      "firms_id": "FIRMS-N-20260225-0813-261",
+      "event_group_id": "EVT-AMBIGUOUS-EXCURSION-20260225",
+      "acq_datetime": "2026-02-25T08:13:00Z",
+      "firms_location": [
+        22.34177,
+        69.86535
+      ],
+      "satellite": "N",
+      "frp": 11.97,
+      "external_target_id": "HIST-20260225-N-261",
+      "external_source": "EMPIRICAL_BASELINE_ANOMALY_ONLY",
+      "spatial_distance_meters": 521,
+      "temporal_match_diff": "0_HOURS_COINCIDENT",
+      "label_assigned": "UNVERIFIED_ANOMALOUS_EXCURSION",
+      "label_tier": "TIER_4",
+      "label_status": "AMBIGUOUS",
+      "split_assignment": "EXCLUDED_FROM_SPLIT",
+      "defensibility_audit": "High FRP off-zone excursion without verified PESO/CSB incident report. Strictly excluded to prevent false industrial fire labeling."
+    },
+    {
+      "sample_index": 15,
+      "firms_id": "FIRMS-NOAA-20-20260106-0910-9",
+      "event_group_id": "EVT-UNMATCHED-20260106-9",
+      "acq_datetime": "2026-01-06T09:10:00Z",
+      "firms_location": [
+        22.34177,
+        69.8708
+      ],
+      "satellite": "NOAA-20",
+      "frp": 2.24,
+      "external_target_id": "NONE",
+      "external_source": "NONE",
+      "spatial_distance_meters": 673,
+      "temporal_match_diff": "NO_EXTERNAL_MATCH",
+      "label_assigned": "UNMATCHED_REGIONAL_HOTSPOT",
+      "label_tier": "TIER_4",
+      "label_status": "UNMATCHED",
+      "split_assignment": "EXCLUDED_FROM_SPLIT",
+      "defensibility_audit": "Regional thermal detection lacking independent non-satellite agricultural or wildfire dispatch ground-truth. Strictly excluded (TIER_4)."
+    },
+    {
+      "sample_index": 16,
+      "firms_id": "FIRMS-NOAA-20-20260108-2101-16",
+      "event_group_id": "EVT-UNMATCHED-20260108-16",
+      "acq_datetime": "2026-01-08T21:01:00Z",
+      "firms_location": [
+        22.3329,
+        69.86551
+      ],
+      "satellite": "NOAA-20",
+      "frp": 1.66,
+      "external_target_id": "NONE",
+      "external_source": "NONE",
+      "spatial_distance_meters": 489,
+      "temporal_match_diff": "NO_EXTERNAL_MATCH",
+      "label_assigned": "UNMATCHED_REGIONAL_HOTSPOT",
+      "label_tier": "TIER_4",
+      "label_status": "UNMATCHED",
+      "split_assignment": "EXCLUDED_FROM_SPLIT",
+      "defensibility_audit": "Regional thermal detection lacking independent non-satellite agricultural or wildfire dispatch ground-truth. Strictly excluded (TIER_4)."
+    },
+    {
+      "sample_index": 17,
+      "firms_id": "FIRMS-NOAA-20-20260108-2101-17",
+      "event_group_id": "EVT-UNMATCHED-20260108-17",
+      "acq_datetime": "2026-01-08T21:01:00Z",
+      "firms_location": [
+        22.33584,
+        69.847
+      ],
+      "satellite": "NOAA-20",
+      "frp": 1.58,
+      "external_target_id": "NONE",
+      "external_source": "NONE",
+      "spatial_distance_meters": 847,
+      "temporal_match_diff": "NO_EXTERNAL_MATCH",
+      "label_assigned": "UNMATCHED_REGIONAL_HOTSPOT",
+      "label_tier": "TIER_4",
+      "label_status": "UNMATCHED",
+      "split_assignment": "EXCLUDED_FROM_SPLIT",
+      "defensibility_audit": "Regional thermal detection lacking independent non-satellite agricultural or wildfire dispatch ground-truth. Strictly excluded (TIER_4)."
+    },
+    {
+      "sample_index": 18,
+      "firms_id": "FIRMS-NOAA-20-20260109-2042-20",
+      "event_group_id": "EVT-UNMATCHED-20260109-20",
+      "acq_datetime": "2026-01-09T20:42:00Z",
+      "firms_location": [
+        22.31436,
+        69.85641
+      ],
+      "satellite": "NOAA-20",
+      "frp": 1.18,
+      "external_target_id": "NONE",
+      "external_source": "NONE",
+      "spatial_distance_meters": 2742,
+      "temporal_match_diff": "NO_EXTERNAL_MATCH",
+      "label_assigned": "UNMATCHED_REGIONAL_HOTSPOT",
+      "label_tier": "TIER_4",
+      "label_status": "UNMATCHED",
+      "split_assignment": "EXCLUDED_FROM_SPLIT",
+      "defensibility_audit": "Regional thermal detection lacking independent non-satellite agricultural or wildfire dispatch ground-truth. Strictly excluded (TIER_4)."
+    },
+    {
+      "sample_index": 19,
+      "firms_id": "FIRMS-NOAA-20-20260111-2004-24",
+      "event_group_id": "EVT-UNMATCHED-20260111-24",
+      "acq_datetime": "2026-01-11T20:04:00Z",
+      "firms_location": [
+        22.34667,
+        69.85779
+      ],
+      "satellite": "NOAA-20",
+      "frp": 5.2,
+      "external_target_id": "NONE",
+      "external_source": "NONE",
+      "spatial_distance_meters": 917,
+      "temporal_match_diff": "NO_EXTERNAL_MATCH",
+      "label_assigned": "UNMATCHED_REGIONAL_HOTSPOT",
+      "label_tier": "TIER_4",
+      "label_status": "UNMATCHED",
+      "split_assignment": "EXCLUDED_FROM_SPLIT",
+      "defensibility_audit": "Regional thermal detection lacking independent non-satellite agricultural or wildfire dispatch ground-truth. Strictly excluded (TIER_4)."
+    },
+    {
+      "sample_index": 20,
+      "firms_id": "FIRMS-NOAA-20-20260111-2145-26",
+      "event_group_id": "EVT-UNMATCHED-20260111-26",
+      "acq_datetime": "2026-01-11T21:45:00Z",
+      "firms_location": [
+        22.34307,
+        69.86812
+      ],
+      "satellite": "NOAA-20",
+      "frp": 1.29,
+      "external_target_id": "NONE",
+      "external_source": "NONE",
+      "spatial_distance_meters": 673,
+      "temporal_match_diff": "NO_EXTERNAL_MATCH",
+      "label_assigned": "UNMATCHED_REGIONAL_HOTSPOT",
+      "label_tier": "TIER_4",
+      "label_status": "UNMATCHED",
+      "split_assignment": "EXCLUDED_FROM_SPLIT",
+      "defensibility_audit": "Regional thermal detection lacking independent non-satellite agricultural or wildfire dispatch ground-truth. Strictly excluded (TIER_4)."
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "facility_id": "FAC-WB-HALDIA-16",
+  "facility_name": "Haldia Refinery & Petrochemicals Complex",
+  "baseline_status": "EMPIRICAL",
+  "minimum_threshold_required": 30,
+  "provenance": "REAL_NASA_FIRMS",
+  "provenance_type": "FACILITY_ASSOCIATED",
+  "population_scope": "FACILITY_ASSOCIATED",
+  "baseline_period": {
+    "start_date": "2026-01-01",
+    "end_date": "2026-03-22",
+    "total_days": 115
+  },
+  "metrics": {
+    "observation_count": 94,
+    "observation_days": 31,
+    "observations_per_day": 3.03,
+    "frp_median": 0.96,
+    "frp_p25": 0.68,
+    "frp_p75": 1.81,
+    "frp_p90": 3.46,
+    "frp_p95": 4.47,
+    "frp_max": 13.07,
+    "frp_iqr": 1.13,
+    "frp_mad": 0.37
+  },
+  "diurnal": {
+    "day_count": 22,
+    "night_count": 72,
+    "day_pct": 23,
+    "night_pct": 77,
+    "hour_distribution": []
+  },
+  "spatial_distribution": {
+    "known_zone_count": 0,
+    "off_zone_count": 34,
+    "buffer_count": 60,
+    "zones": []
+  },
+  "temporal_frequency": 0.27,
+  "persistence_classification": "PERSISTENT",
+  "created_at": "2026-09-27T06:37:03.808Z"
+}

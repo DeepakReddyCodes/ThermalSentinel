@@ -1,0 +1,43 @@
+{
+  "facility_id": "FAC-GUJ-HAZIRA-04",
+  "facility_name": "Hazira LNG Terminal & Petrochemical Manufacturing",
+  "baseline_status": "EMPIRICAL",
+  "minimum_threshold_required": 30,
+  "provenance": "REAL_NASA_FIRMS",
+  "provenance_type": "FACILITY_ASSOCIATED",
+  "population_scope": "FACILITY_ASSOCIATED",
+  "baseline_period": {
+    "start_date": "2026-01-01",
+    "end_date": "2026-04-25",
+    "total_days": 115
+  },
+  "metrics": {
+    "observation_count": 1045,
+    "observation_days": 115,
+    "observations_per_day": 9.09,
+    "frp_median": 5.62,
+    "frp_p25": 3.27,
+    "frp_p75": 9.04,
+    "frp_p90": 14,
+    "frp_p95": 17.62,
+    "frp_max": 46.92,
+    "frp_iqr": 5.77,
+    "frp_mad": 2.76
+  },
+  "diurnal": {
+    "day_count": 353,
+    "night_count": 692,
+    "day_pct": 34,
+    "night_pct": 66,
+    "hour_distribution": []
+  },
+  "spatial_distribution": {
+    "known_zone_count": 0,
+    "off_zone_count": 0,
+    "buffer_count": 1045,
+    "zones": []
+  },
+  "temporal_frequency": 1,
+  "persistence_classification": "PERSISTENT",
+  "created_at": "2026-09-27T06:35:35.419Z"
+}

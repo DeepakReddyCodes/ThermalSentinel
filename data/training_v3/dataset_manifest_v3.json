@@ -1,0 +1,26 @@
+{
+  "manifest_version": "v3.0.0",
+  "generated_at": "2026-09-10T17:55:36.582286+00:00",
+  "dataset_name": "ThermalSentinel-Training-Candidates-v3",
+  "audit_phase": "Phase 5D \u2014 Wildfire / Vegetation-Burn Data Acquisition & Cross-Domain Validation",
+  "status": "DATASET CONSTRUCTED \u2014 MODEL TRAINING NOT READY (EVENT DIVERSITY GAP)",
+  "supervised_learning_readiness": "NOT READY \u2014 CONTINUE DATA ACQUISITION",
+  "artifacts_and_checksums": {
+    "csv_file": "training_candidates_v3.csv",
+    "csv_sha256": "ac270a9ddd953ef5eaa47334ace9726331923d7d9703a7d37ddd50a1b91c56aa",
+    "csv_bytes": 811408,
+    "json_file": "training_candidates_v3.json",
+    "json_sha256": "ff28c745b89200f81cd1a9dfcddddaa239f09cbe845b968bc06b6474dd49b72d",
+    "audit_file": "independent_label_match_audit_v3.json",
+    "audit_sha256": "a995c6adf322e4f77ea6276c33bbe3a3eb9a0e8ed27f40e7335f0261d6653cbe"
+  },
+  "inventory": {
+    "total_observations": 1631,
+    "usable_supervised_instances": 1440,
+    "usable_flaring_instances": 155,
+    "usable_wildfire_instances": 1285,
+    "usable_flaring_events": 105,
+    "usable_wildfire_events": 2,
+    "total_excluded_instances": 191
+  }
+}

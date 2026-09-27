@@ -1,0 +1,41 @@
+{
+  "manifest_version": "1.0.0",
+  "primary_radiometric_features": [
+    "log_frp",
+    "brightness_ti4",
+    "brightness_ti5",
+    "brightness_delta",
+    "scan",
+    "track",
+    "is_day"
+  ],
+  "feature_descriptions": {
+    "log_frp": "Natural log of 1 + Fire Radiative Power (MW)",
+    "brightness_ti4": "3.74 um Midwave Infrared Brightness Temperature (K)",
+    "brightness_ti5": "11.45 um Longwave Infrared Brightness Temperature (K)",
+    "brightness_delta": "Spectral difference (TI4 - TI5) sensitive to high-temperature sub-pixel emitters",
+    "scan": "Cross-track pixel footprint dimension (km)",
+    "track": "Along-track pixel footprint dimension (km)",
+    "is_day": "Binary diurnal flag (1 = Day, 0 = Night)"
+  },
+  "strictly_prohibited_features": [
+    "latitude",
+    "longitude",
+    "geographic_region",
+    "country",
+    "year",
+    "month",
+    "acq_datetime",
+    "facility_id",
+    "dist_to_facility",
+    "is_inside_facility",
+    "dist_to_observed_thermal_zone",
+    "external_source",
+    "external_record_id",
+    "spatial_match_distance",
+    "temporal_match_difference",
+    "label_tier",
+    "label_status",
+    "exclusion_reason"
+  ]
+}

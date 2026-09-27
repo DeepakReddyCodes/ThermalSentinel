@@ -1,0 +1,414 @@
+{
+  "exp_a_test_events": [
+    {
+      "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260102",
+      "y_true": 0,
+      "y_prob": 0.02505935109469793,
+      "y_pred": 0
+    },
+    {
+      "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260103",
+      "y_true": 0,
+      "y_prob": 0.02505935109469793,
+      "y_pred": 0
+    },
+    {
+      "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260117",
+      "y_true": 0,
+      "y_prob": 0.02505935109469793,
+      "y_pred": 0
+    },
+    {
+      "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260123",
+      "y_true": 0,
+      "y_prob": 0.3940688681890953,
+      "y_pred": 0
+    },
+    {
+      "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260124",
+      "y_true": 0,
+      "y_prob": 0.0,
+      "y_pred": 0
+    },
+    {
+      "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260129",
+      "y_true": 0,
+      "y_prob": 0.02505935109469793,
+      "y_pred": 0
+    },
+    {
+      "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260209",
+      "y_true": 0,
+      "y_prob": 0.02505935109469793,
+      "y_pred": 0
+    },
+    {
+      "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260220",
+      "y_true": 0,
+      "y_prob": 0.02505935109469793,
+      "y_pred": 0
+    },
+    {
+      "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260331",
+      "y_true": 0,
+      "y_prob": 0.02505935109469793,
+      "y_pred": 0
+    },
+    {
+      "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260414",
+      "y_true": 0,
+      "y_prob": 0.02505935109469793,
+      "y_pred": 0
+    },
+    {
+      "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260112",
+      "y_true": 0,
+      "y_prob": 0.025059351094697934,
+      "y_pred": 0
+    },
+    {
+      "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260126",
+      "y_true": 0,
+      "y_prob": 0.8001324879341348,
+      "y_pred": 1
+    },
+    {
+      "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260129",
+      "y_true": 0,
+      "y_prob": 0.02505935109469793,
+      "y_pred": 0
+    },
+    {
+      "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260212",
+      "y_true": 0,
+      "y_prob": 0.135711155909283,
+      "y_pred": 0
+    },
+    {
+      "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260301",
+      "y_true": 0,
+      "y_prob": 0.02505935109469793,
+      "y_pred": 0
+    },
+    {
+      "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260303",
+      "y_true": 0,
+      "y_prob": 0.02505935109469793,
+      "y_pred": 0
+    },
+    {
+      "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260311",
+      "y_true": 0,
+      "y_prob": 0.02505935109469793,
+      "y_pred": 0
+    },
+    {
+      "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260313",
+      "y_true": 0,
+      "y_prob": 0.02505935109469793,
+      "y_pred": 0
+    },
+    {
+      "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260317",
+      "y_true": 0,
+      "y_prob": 0.02505935109469793,
+      "y_pred": 0
+    },
+    {
+      "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260409",
+      "y_true": 0,
+      "y_prob": 0.02505935109469793,
+      "y_pred": 0
+    },
+    {
+      "event_id": "EVT-WFIGS-WF-CA-COLD-SPRINGS-20200820",
+      "y_true": 1,
+      "y_prob": 0.9280211980694615,
+      "y_pred": 1
+    },
+    {
+      "event_id": "EVT-WFIGS-WF-CO-MARSHALL-20211230",
+      "y_true": 1,
+      "y_prob": 1.0,
+      "y_pred": 1
+    },
+    {
+      "event_id": "EVT-WFIGS-WF-ID-WILDHORSE-20220905",
+      "y_true": 1,
+      "y_prob": 0.9388913102867527,
+      "y_pred": 1
+    },
+    {
+      "event_id": "EVT-WFIGS-WF-OR-CEDAR-CREEK-20220911",
+      "y_true": 1,
+      "y_prob": 0.7671399712527198,
+      "y_pred": 1
+    }
+  ],
+  "exp_c_holdout_events": [
+    {
+      "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260102",
+      "y_true": 0,
+      "y_prob": 0.03406914031416696,
+      "y_pred": 0
+    },
+    {
+      "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260103",
+      "y_true": 0,
+      "y_prob": 0.03406914031416696,
+      "y_pred": 0
+    },
+    {
+      "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260117",
+      "y_true": 0,
+      "y_prob": 0.03406914031416696,
+      "y_pred": 0
+    },
+    {
+      "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260123",
+      "y_true": 0,
+      "y_prob": 0.6166666666666666,
+      "y_pred": 1
+    },
+    {
+      "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260124",
+      "y_true": 0,
+      "y_prob": 1.0,
+      "y_pred": 1
+    },
+    {
+      "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260129",
+      "y_true": 0,
+      "y_prob": 0.03406914031416696,
+      "y_pred": 0
+    },
+    {
+      "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260209",
+      "y_true": 0,
+      "y_prob": 0.03406914031416696,
+      "y_pred": 0
+    },
+    {
+      "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260213",
+      "y_true": 0,
+      "y_prob": 0.03406914031416696,
+      "y_pred": 0
+    },
+    {
+      "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260220",
+      "y_true": 0,
+      "y_prob": 0.03406914031416696,
+      "y_pred": 0
+    },
+    {
+      "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260301",
+      "y_true": 0,
+      "y_prob": 0.03406914031416696,
+      "y_pred": 0
+    },
+    {
+      "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260324",
+      "y_true": 0,
+      "y_prob": 0.03406914031416696,
+      "y_pred": 0
+    },
+    {
+      "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260331",
+      "y_true": 0,
+      "y_prob": 0.03406914031416696,
+      "y_pred": 0
+    },
+    {
+      "event_id": "EVT-EOG-FLARE-JAM-SOUTH-E-20260414",
+      "y_true": 0,
+      "y_prob": 0.03406914031416696,
+      "y_pred": 0
+    },
+    {
+      "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260106",
+      "y_true": 0,
+      "y_prob": 0.03406914031416696,
+      "y_pred": 0
+    },
+    {
+      "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260107",
+      "y_true": 0,
+      "y_prob": 0.03406914031416696,
+      "y_pred": 0
+    },
+    {
+      "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260108",
+      "y_true": 0,
+      "y_prob": 0.03406914031416696,
+      "y_pred": 0
+    },
+    {
+      "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260112",
+      "y_true": 0,
+      "y_prob": 0.03406914031416696,
+      "y_pred": 0
+    },
+    {
+      "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260113",
+      "y_true": 0,
+      "y_prob": 0.03406914031416696,
+      "y_pred": 0
+    },
+    {
+      "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260115",
+      "y_true": 0,
+      "y_prob": 0.03406914031416696,
+      "y_pred": 0
+    },
+    {
+      "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260126",
+      "y_true": 0,
+      "y_prob": 0.42499999999999993,
+      "y_pred": 0
+    },
+    {
+      "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260129",
+      "y_true": 0,
+      "y_prob": 0.03406914031416696,
+      "y_pred": 0
+    },
+    {
+      "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260130",
+      "y_true": 0,
+      "y_prob": 0.6166666666666666,
+      "y_pred": 1
+    },
+    {
+      "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260212",
+      "y_true": 0,
+      "y_prob": 0.2946897134380556,
+      "y_pred": 0
+    },
+    {
+      "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260301",
+      "y_true": 0,
+      "y_prob": 0.03406914031416696,
+      "y_pred": 0
+    },
+    {
+      "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260303",
+      "y_true": 0,
+      "y_prob": 0.03406914031416696,
+      "y_pred": 0
+    },
+    {
+      "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260304",
+      "y_true": 0,
+      "y_prob": 0.03406914031416696,
+      "y_pred": 0
+    },
+    {
+      "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260306",
+      "y_true": 0,
+      "y_prob": 0.03406914031416696,
+      "y_pred": 0
+    },
+    {
+      "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260311",
+      "y_true": 0,
+      "y_prob": 0.03406914031416696,
+      "y_pred": 0
+    },
+    {
+      "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260313",
+      "y_true": 0,
+      "y_prob": 0.03406914031416696,
+      "y_pred": 0
+    },
+    {
+      "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260317",
+      "y_true": 0,
+      "y_prob": 0.03406914031416696,
+      "y_pred": 0
+    },
+    {
+      "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260326",
+      "y_true": 0,
+      "y_prob": 0.03406914031416696,
+      "y_pred": 0
+    },
+    {
+      "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260327",
+      "y_true": 0,
+      "y_prob": 0.03406914031416696,
+      "y_pred": 0
+    },
+    {
+      "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260331",
+      "y_true": 0,
+      "y_prob": 0.03406914031416696,
+      "y_pred": 0
+    },
+    {
+      "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260408",
+      "y_true": 0,
+      "y_prob": 0.03406914031416696,
+      "y_pred": 0
+    },
+    {
+      "event_id": "EVT-EOG-FLARE-JAM-SOUTH-W-20260409",
+      "y_true": 0,
+      "y_prob": 0.03406914031416696,
+      "y_pred": 0
+    },
+    {
+      "event_id": "EVT-WFIGS-WF-AZ-BOTTOM-20210629",
+      "y_true": 1,
+      "y_prob": 0.9613627656125666,
+      "y_pred": 1
+    },
+    {
+      "event_id": "EVT-WFIGS-WF-CO-MARSHALL-20211230",
+      "y_true": 1,
+      "y_prob": 1.0,
+      "y_pred": 1
+    },
+    {
+      "event_id": "EVT-WFIGS-WF-ID-TWO-AND-HALF-20220909",
+      "y_true": 1,
+      "y_prob": 0.9119369369369369,
+      "y_pred": 1
+    },
+    {
+      "event_id": "EVT-WFIGS-WF-ID-WILDHORSE-20220905",
+      "y_true": 1,
+      "y_prob": 0.8032894736842104,
+      "y_pred": 1
+    },
+    {
+      "event_id": "EVT-WFIGS-WF-MT-GASS-FLATS-20200924",
+      "y_true": 1,
+      "y_prob": 1.0,
+      "y_pred": 1
+    },
+    {
+      "event_id": "EVT-WFIGS-WF-NM-HERMITS-PEAK-20220410",
+      "y_true": 1,
+      "y_prob": 1.0,
+      "y_pred": 1
+    },
+    {
+      "event_id": "EVT-WFIGS-WF-TX-CANADIAN-RIVER-20220330",
+      "y_true": 1,
+      "y_prob": 1.0,
+      "y_pred": 1
+    },
+    {
+      "event_id": "EVT-WFIGS-WF-TX-KIDD-20220318",
+      "y_true": 1,
+      "y_prob": 0.9654371584699454,
+      "y_pred": 1
+    },
+    {
+      "event_id": "EVT-WFIGS-WF-TX-SMOKE-STACK-20220503",
+      "y_true": 1,
+      "y_prob": 0.7146296296296296,
+      "y_pred": 1
+    }
+  ]
+}

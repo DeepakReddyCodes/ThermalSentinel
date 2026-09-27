@@ -1,0 +1,75 @@
+{
+  "audit_version": "v2.0.0",
+  "audit_timestamp": "2026-09-10T17:00:00.000Z",
+  "audit_phase": "Phase 5C — Independent Non-Flare Label Expansion & Match Audit",
+  "dataset_evaluated": "ThermalSentinel-Training-Candidates-v1 (Jamnagar Study Corridor, 294 VIIRS Observations)",
+  "circularity_audit_summary": {
+    "total_sources_audited": 7,
+    "circular_sources_rejected": [
+      {
+        "source": "Forest Survey of India (FSI) Van Agni Alerts",
+        "reason": "Direct derivative of SNPP-VIIRS and MODIS active fire hotspots. Satellite circularity violation."
+      },
+      {
+        "source": "ICAR-CREAMS Crop Residue Burning Bulletins",
+        "reason": "Direct derivative of VIIRS/MODIS hotspots masked by agricultural land cover. Circularity violation."
+      }
+    ],
+    "inaccessible_sources_rejected": [
+      {
+        "source": "State Forest Department Inspection Registers",
+        "reason": "Non-machine-readable paper records; lack geocoded vector perimeters and sub-day timestamps."
+      }
+    ],
+    "geographically_disjoint_tier1_sources": [
+      {
+        "source": "US NIFC WFIGS Incident Perimeters (IRWIN)",
+        "status": "Verified Tier 1 Ground Truth, but geographically restricted to US landmass."
+      },
+      {
+        "source": "Canadian National Fire Database (CNFDB)",
+        "status": "Verified Tier 1 Ground Truth, but geographically restricted to Canada landmass."
+      }
+    ]
+  },
+  "regional_non_flare_observations_audited": {
+    "count_unassociated_regional_hotspots": 109,
+    "cropland_intersection_count": 64,
+    "scrub_vegetation_intersection_count": 45,
+    "ground_truth_status": "UNVERIFIED_UNMATCHED",
+    "can_be_labeled_as_agricultural_burn": false,
+    "agricultural_burn_justification": "STRICT PROHIBITION ENFORCED: No non-satellite farm dispatch or burning permit records exist for these coordinates. Inferring AGRICULTURAL_BURN from cropland land cover + harvest season is an unverified heuristic, not ground truth.",
+    "can_be_labeled_as_wildfire": false,
+    "wildfire_justification": "STRICT PROHIBITION ENFORCED: No non-circular wildland fire incident dispatch perimeters exist for these coordinates. Inferring WILDFIRE from vegetation land cover is an unverified heuristic.",
+    "can_be_labeled_as_other_negative_control": false,
+    "negative_control_justification": "Labeling unmatched hotspots as 'OTHER' or 'CONTROL' would be false. Unmatched means no verified external label was found; it does NOT mean the thermal emitter was definitively not vegetation or agricultural burning."
+  },
+  "active_dataset_metrics": {
+    "total_raw_observations": 294,
+    "usable_tier1_labels": 0,
+    "usable_tier2_labels": 155,
+    "usable_tier2_class": "GAS_FLARE",
+    "usable_tier2_source": "EOG Global Gas Flaring Catalog (v2.1)",
+    "usable_tier2_events": 105,
+    "usable_non_flare_labels": 0,
+    "excluded_observations": 139,
+    "distinct_training_classes": 1
+  },
+  "taxonomy_evaluation": {
+    "current_taxonomy": ["GAS_FLARE", "WILDFIRE_VEGETATION", "AGRICULTURAL_BURN", "INDUSTRIAL_FIRE", "OTHER"],
+    "recommended_taxonomy_revision": {
+      "proposed_class": "VEGETATION_BURN",
+      "rationale": "Satellite sensors and burned area products (MCD64A1) observe the physical combustion of vegetative biomass, but cannot observe human legal intent. Merging agricultural residue and open scrub burning into a unified, physically defensible VEGETATION_BURN class avoids unsupportable claims regarding human fire ignition type, while reserving WILDFIRE_INCIDENT_CONFIRMED strictly for Tier 1 agency dispatch perimeters (e.g. WFIGS)."
+    }
+  },
+  "supervised_learning_readiness_test": {
+    "criterion_at_least_two_distinct_classes": false,
+    "criterion_labels_tier1_or_tier2": true,
+    "criterion_sufficient_sample_diversity": false,
+    "criterion_group_level_splits_possible": true,
+    "criterion_zero_target_leakage": true,
+    "criterion_scientifically_defensible_targets": true,
+    "final_verdict": "NOT READY — CONTINUE LABEL ACQUISITION",
+    "justification": "The active corpus contains only one verified training class (GAS_FLARE, N = 155). Mathematical optimization of supervised classification requires at least two distinct labeled classes. Model training cannot proceed until complementary geographic regions with verified Tier 1/Tier 2 non-flare labels (e.g. US NIFC WFIGS or Canadian CNFDB) are ingested."
+  }
+}

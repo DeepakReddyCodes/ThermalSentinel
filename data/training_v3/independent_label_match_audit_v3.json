@@ -1,0 +1,72 @@
+{
+  "audit_version": "v3.0.0",
+  "audit_timestamp": "2026-09-10T17:55:36.581338+00:00",
+  "phase": "Phase 5D \u2014 Wildfire / Vegetation-Burn Data Acquisition & Cross-Domain Validation",
+  "total_observations_in_corpus": 1631,
+  "corpus_breakdown_by_source": {
+    "Jamnagar_Flaring_Corpus": 294,
+    "US_Pacific_Northwest_Wildfire_Corpus": 1337
+  },
+  "verified_usable_training_observations": {
+    "GAS_FLARE_Tier2": 155,
+    "WILDFIRE_CONFIRMED_Tier1": 1285,
+    "total_usable": 1440
+  },
+  "event_group_audit": {
+    "GAS_FLARE_events": 105,
+    "WILDFIRE_events": 2,
+    "wildfire_event_details": [
+      {
+        "event_group_id": "EVT-WFIGS-US-WA-BOLT-CREEK-20220911",
+        "incident": "Bolt Creek",
+        "state": "WA",
+        "acres": 14820,
+        "usable_observations": 587
+      },
+      {
+        "event_group_id": "EVT-WFIGS-US-OR-CEDAR-CREEK-20220911",
+        "incident": "Cedar Creek",
+        "state": "OR",
+        "acres": 127310,
+        "usable_observations": 695
+      }
+    ]
+  },
+  "excluded_observations_summary": {
+    "flaring_weak_boundary_Tier3": 29,
+    "flaring_ambiguous_excursion_Tier4": 1,
+    "jamnagar_regional_unmatched_Tier4": 109,
+    "wildfire_weak_boundary_Tier3": 16,
+    "wildfire_unmatched_buffer_Tier4": 36,
+    "total_excluded": 191
+  },
+  "geographic_leakage_audit": {
+    "severe_confounding_identified": true,
+    "description": "All GAS_FLARE observations originate from Gujarat, India (lat ~22.3N, lon ~69.8E). All WILDFIRE observations originate from the US Pacific Northwest (lat 43-48N, lon -121 to -122W). A decision tree given latitude/longitude or facility identifiers will memorize geography with 100% accuracy rather than learning thermal source characteristics.",
+    "mandatory_features_to_exclude_from_training": [
+      "latitude",
+      "longitude",
+      "geographic_region",
+      "facility_id",
+      "dist_to_facility",
+      "is_inside_facility",
+      "dist_to_observed_thermal_zone",
+      "external_source",
+      "external_record_id"
+    ],
+    "strictly_permitted_operational_features": [
+      "frp",
+      "brightness_ti4",
+      "brightness_ti5",
+      "scan",
+      "track",
+      "day_night",
+      "satellite",
+      "confidence"
+    ]
+  },
+  "supervised_model_readiness_test": {
+    "status": "NOT READY \u2014 CONTINUE DATA ACQUISITION",
+    "scientific_justification": "Although 1,282 Tier-1 wildfire observations were successfully matched, they derive from only TWO physical wildfire events on a single calendar day (2022-09-11) in a single ecosystem (Cascades conifer forest). Evaluating or training on only 2 physical wildfire events is mathematically degenerate and risks severe event-level overfitting. Additional physical wildfire events across diverse fire regimes (e.g. California chaparral, Great Plains grasslands, Texas rangelands) must be acquired before training is defensible."
+  }
+}

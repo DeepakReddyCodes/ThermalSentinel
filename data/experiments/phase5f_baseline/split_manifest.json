@@ -1,0 +1,42 @@
+{
+  "manifest_version": "1.0.0",
+  "random_seed": 42,
+  "splitting_policy": "Strict Group-Preserved Event Partitioning (Zero Event Overlap)",
+  "experiment_a_split": {
+    "TRAIN": {
+      "flare_events": 65,
+      "flare_obs": 95,
+      "wf_events": 10,
+      "wf_obs": 1408
+    },
+    "VALIDATION": {
+      "flare_events": 20,
+      "flare_obs": 29,
+      "wf_events": 3,
+      "wf_obs": 586
+    },
+    "TEST": {
+      "flare_events": 20,
+      "flare_obs": 31,
+      "wf_events": 4,
+      "wf_obs": 834
+    }
+  },
+  "experiment_c_cross_geographic_split": {
+    "training_wildfire_regions": [
+      "US-WA",
+      "US-OR",
+      "US-CA"
+    ],
+    "holdout_wildfire_regions": [
+      "US-TX",
+      "US-NM",
+      "US-ID",
+      "US-AZ",
+      "US-MT",
+      "US-CO"
+    ],
+    "train_wildfire_events": 8,
+    "test_wildfire_events": 9
+  }
+}

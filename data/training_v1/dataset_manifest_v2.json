@@ -1,0 +1,54 @@
+{
+  "manifest_version": "v2.0.0",
+  "generated_at": "2026-09-10T17:00:00.000Z",
+  "dataset_name": "ThermalSentinel-Training-Candidates-v2-Audit",
+  "audit_phase": "Phase 5C — Independent Non-Flare Label Expansion & Circularity Audit",
+  "status": "DATASET PARTIALLY CONSTRUCTED — ADDITIONAL LABELS REQUIRED",
+  "supervised_learning_readiness": "NOT READY — CONTINUE LABEL ACQUISITION",
+  "active_tabular_artifacts": {
+    "primary_data_file": "training_candidates_v1.csv",
+    "primary_sha256": "23ad61cb5c0bac771b96cb28c428ace26120ce9b1987f40acaf48c4cb580b2aa",
+    "primary_bytes": 108733,
+    "json_data_file": "training_candidates_v1.json",
+    "json_sha256": "3351ae1e76c59b5513f216baf0a4a08bc69a1f1cc51f8c06ea01a781dc7d26b7",
+    "json_bytes": 289462,
+    "v2_tabular_generation_decision": "DEFERRED",
+    "v2_tabular_generation_reason": "Per user directive, training_candidates_v2.csv and parquet are generated ONLY if new genuinely eligible labels are obtained. Because all candidate non-flare sources in the current study corridor failed either the circularity test (FSI/CREAMS) or the machine-readable accessibility test (State Forest Depts), no new Tier 1/2 labels were obtained. Fabricating a v2 table without new ground-truth was strictly rejected."
+  },
+  "supporting_audit_artifacts": {
+    "label_sources_catalog": "label_sources_v2.json",
+    "label_match_audit": "independent_label_match_audit_v2.json",
+    "audit_markdown_report": "Phase5C_Independent_Label_Audit.md"
+  },
+  "current_inventory": {
+    "total_firms_observations": 294,
+    "usable_supervised_instances": 155,
+    "usable_classes": {
+      "GAS_FLARE": 155,
+      "WILDFIRE_VEGETATION": 0,
+      "AGRICULTURAL_BURN": 0,
+      "INDUSTRIAL_FIRE": 0,
+      "OTHER": 0
+    },
+    "distinct_training_classes": 1,
+    "unique_physical_event_groups": 105,
+    "total_excluded_instances": 139
+  },
+  "circularity_audit_summary": {
+    "sources_tested": [
+      "EOG Global Gas Flaring Catalog (PASS, Tier 2)",
+      "Forest Survey of India Van Agni (FAIL, Circular)",
+      "ICAR-CREAMS Stubble Burning (FAIL, Circular)",
+      "State Forest Department Beat Registers (FAIL, Inaccessible/Non-Auditable)",
+      "NASA MCD64A1 Burned Area (PASS Corroboration, Inconclusive Event Type)",
+      "US NIFC WFIGS / IRWIN (PASS Tier 1, Geographically Disjoint)",
+      "Canadian National Fire Database (PASS Tier 1, Geographically Disjoint)"
+    ]
+  },
+  "proposed_next_steps": [
+    "Select complementary geographic study regions (e.g. US Southwest / Pacific Northwest) where NIFC WFIGS provides authoritative Tier 1 wildfire perimeters with sub-hour timestamps.",
+    "Ingest real FIRMS observations for those complementary corridors.",
+    "Perform elliptical footprint matching against WFIGS perimeters to establish a certified non-flare negative class.",
+    "Formally adopt the VEGETATION_BURN taxonomy to prevent ambiguous fire-intent classification."
+  ]
+}

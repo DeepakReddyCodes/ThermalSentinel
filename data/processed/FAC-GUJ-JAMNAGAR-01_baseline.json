@@ -1,0 +1,94 @@
+{
+  "facility_id": "FAC-GUJ-JAMNAGAR-01",
+  "facility_name": "Jamnagar Refining & Petrochemical Complex",
+  "baseline_status": "EMPIRICAL",
+  "minimum_threshold_required": 30,
+  "provenance": "Historical sample: 2026-01-01 to 2026-04-22 (111 days, 294 VIIRS observations)",
+  "baseline_period": {
+    "start_date": "2026-01-01",
+    "end_date": "2026-04-22",
+    "total_days": 111
+  },
+  "metrics": {
+    "observation_count": 294,
+    "observation_days": 88,
+    "observations_per_day": 2.65,
+    "frp_median": 2.32,
+    "frp_p25": 1.56,
+    "frp_p75": 3.11,
+    "frp_p90": 4.27,
+    "frp_p95": 6.41,
+    "frp_max": 31.19,
+    "frp_iqr": 1.55,
+    "frp_mad": 0.76
+  },
+  "diurnal": {
+    "day_count": 48,
+    "night_count": 246,
+    "day_pct": 16,
+    "night_pct": 84,
+    "hour_distribution": [
+      {"hour": 0, "count": 0, "frequency": 0},
+      {"hour": 1, "count": 0, "frequency": 0},
+      {"hour": 2, "count": 0, "frequency": 0},
+      {"hour": 3, "count": 0, "frequency": 0},
+      {"hour": 4, "count": 0, "frequency": 0},
+      {"hour": 5, "count": 0, "frequency": 0},
+      {"hour": 6, "count": 0, "frequency": 0},
+      {"hour": 7, "count": 9, "frequency": 0.031},
+      {"hour": 8, "count": 25, "frequency": 0.085},
+      {"hour": 9, "count": 14, "frequency": 0.048},
+      {"hour": 10, "count": 0, "frequency": 0},
+      {"hour": 11, "count": 0, "frequency": 0},
+      {"hour": 12, "count": 0, "frequency": 0},
+      {"hour": 13, "count": 0, "frequency": 0},
+      {"hour": 14, "count": 0, "frequency": 0},
+      {"hour": 15, "count": 0, "frequency": 0},
+      {"hour": 16, "count": 0, "frequency": 0},
+      {"hour": 17, "count": 0, "frequency": 0},
+      {"hour": 18, "count": 0, "frequency": 0},
+      {"hour": 19, "count": 0, "frequency": 0},
+      {"hour": 20, "count": 80, "frequency": 0.272},
+      {"hour": 21, "count": 166, "frequency": 0.565},
+      {"hour": 22, "count": 0, "frequency": 0},
+      {"hour": 23, "count": 0, "frequency": 0}
+    ]
+  },
+  "spatial_distribution": {
+    "known_zone_count": 0,
+    "off_zone_count": 110,
+    "buffer_count": 106,
+    "zones": [
+      {
+        "zone_id": "ZONE-JAM-01",
+        "zone_name": "North Flare Stack Cluster (Elevated Flares A1-A4)",
+        "count": 0,
+        "pct": 0,
+        "empirical_frp_median": 0,
+        "empirical_frp_p95": 0
+      },
+      {
+        "zone_id": "ZONE-JAM-02",
+        "zone_name": "Delayed Coker & Crude Distillation Unit (CDU-2)",
+        "count": 0,
+        "pct": 0,
+        "empirical_frp_median": 0,
+        "empirical_frp_p95": 0
+      },
+      {
+        "zone_id": "ZONE-JAM-03",
+        "zone_name": "South Aromatics & Paraxylene Unit Stacks",
+        "count": 0,
+        "pct": 0,
+        "empirical_frp_median": 0,
+        "empirical_frp_p95": 0
+      }
+    ]
+  },
+  "cluster_centroid": [22.3482, 69.8654],
+  "cluster_radius_meters": 1850,
+  "temporal_frequency": 2.65,
+  "recurrence_rate": 79.3,
+  "persistence_classification": "PERSISTENT",
+  "created_at": "2026-09-11T15:00:00.000Z"
+}

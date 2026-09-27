@@ -1,0 +1,170 @@
+{
+  "manifest_version": "v1.0.0",
+  "generated_at": "2026-09-10T16:40:11.872Z",
+  "dataset_name": "ThermalSentinel-Training-Candidates-v1",
+  "purpose": "Offline, auditable ground-truth labeled corpus for source classification evaluation",
+  "source_datasets": [
+    {
+      "name": "NASA FIRMS VIIRS I-Band (NOAA-20 & Suomi-NPP)",
+      "product": "VNP14IMGTDL_NRT / VJ114IMGTDL_NRT 375m Active Fire Product",
+      "provider": "NASA LANCE / FIRMS",
+      "raw_files": [
+        "FAC-GUJ-JAMNAGAR-01_VIIRS_NOAA20_SP_2026-01-01_2026-04-25_raw.csv",
+        "FAC-GUJ-JAMNAGAR-01_VIIRS_SNPP_SP_2026-01-01_2026-04-25_raw.csv"
+      ],
+      "record_count": 294,
+      "temporal_range": "2026-01-01T00:00:00Z to 2026-04-25T23:59:59Z",
+      "spatial_bounds": {
+        "min_latitude": 22.28015,
+        "max_latitude": 22.40965,
+        "min_longitude": 69.75002,
+        "max_longitude": 69.91801
+      }
+    },
+    {
+      "name": "EOG Global Gas Flaring Catalog",
+      "provider": "Earth Observation Group (EOG), Colorado School of Mines / World Bank GFMR",
+      "version": "2024 Global Release (v2.1)",
+      "targets_used": [
+        {
+          "id": "EOG-FLARE-JAM-SOUTH-W",
+          "name": "Jamnagar Refinery South Flare Stack West (Process Area)",
+          "coordinates": [
+            22.339,
+            69.8545
+          ]
+        },
+        {
+          "id": "EOG-FLARE-JAM-SOUTH-E",
+          "name": "Jamnagar Refinery South Flare Stack East (Process Area)",
+          "coordinates": [
+            22.3372,
+            69.8665
+          ]
+        },
+        {
+          "id": "EOG-FLARE-JAM-NORTH",
+          "name": "Jamnagar Refinery North Flare Stack Cluster A1-A4",
+          "coordinates": [
+            22.3685,
+            69.869
+          ]
+        }
+      ]
+    }
+  ],
+  "matching_parameters": {
+    "spatial_method": "Elliptical Mahalanobis Footprint Matching",
+    "formula": "D_ellipse = sqrt((dx / a)^2 + (dy / b)^2)",
+    "semi_major_formula": "a = 0.5 * scan + 0.075 km (incorporating 75m ephemeris RMSE)",
+    "semi_minor_formula": "b = 0.5 * track + 0.075 km (incorporating 75m ephemeris RMSE)",
+    "match_thresholds": {
+      "MATCHED": "D_ellipse <= 1.0",
+      "WEAK_MATCH": "1.0 < D_ellipse <= 1.5 (Downgraded to Tier 3, Excluded from training targets)",
+      "UNMATCHED": "D_ellipse > 1.5"
+    },
+    "temporal_rules": {
+      "GAS_FLARE": "Operational window intersection with continuous refinery flaring inventory",
+      "WILDFIRE_VEGETATION": "Burn date within +/- 2 days of verified perimeter dispatch",
+      "AGRICULTURAL_BURN": "Requires independent non-satellite agricultural burn permit/dispatch"
+    }
+  },
+  "label_credibility_rules": {
+    "TIER_1": "Direct verified ground truth with sub-hour precision (Eligible for training)",
+    "TIER_2": "Strong independent external corroboration (e.g. EOG Flare Catalog; Eligible for training)",
+    "TIER_3": "Contextual spatial evidence or weak boundary matches (Strictly excluded from training)",
+    "TIER_4": "Heuristic, inferred, or uncorroborated detections (Strictly excluded from training)"
+  },
+  "feature_leakage_policy": {
+    "operational_features": [
+      "acq_datetime",
+      "latitude",
+      "longitude",
+      "satellite",
+      "day_night",
+      "frp",
+      "brightness_ti4",
+      "brightness_ti5",
+      "scan",
+      "track",
+      "confidence",
+      "dist_to_facility",
+      "is_inside_facility",
+      "dist_to_observed_thermal_zone"
+    ],
+    "post_event_validation_features_prohibited_from_inference": [
+      "external_source",
+      "external_record_id",
+      "spatial_match_distance",
+      "temporal_match_difference",
+      "label",
+      "label_tier",
+      "label_evidence_type",
+      "label_status",
+      "exclusion_reason"
+    ]
+  },
+  "split_strategy": {
+    "type": "Temporally disjoint, group-preserved split (Group: event_group_id)",
+    "train": {
+      "days": "2026-01-01 to 2026-03-15",
+      "observations": 135
+    },
+    "validation": {
+      "days": "2026-03-16 to 2026-04-05",
+      "observations": 15
+    },
+    "test": {
+      "days": "2026-04-06 to 2026-04-25",
+      "observations": 5
+    },
+    "excluded": 139
+  },
+  "real_class_inventory": {
+    "GAS_FLARE": {
+      "tier_1": 0,
+      "tier_2": 155,
+      "total_usable": 155,
+      "excluded_weak": 29,
+      "reason": "Verified EOG persistent flaring stack centroids."
+    },
+    "WILDFIRE_VEGETATION": {
+      "tier_1": 0,
+      "tier_2": 0,
+      "total_usable": 0,
+      "excluded": 0,
+      "reason": "UNAVAILABLE_FOR_INITIAL_SUPERVISED_TRAINING: No independent verified wildfire incident perimeters in Jamnagar regional corridor during study window."
+    },
+    "AGRICULTURAL_BURN": {
+      "tier_1": 0,
+      "tier_2": 0,
+      "total_usable": 0,
+      "excluded": 0,
+      "reason": "UNAVAILABLE_FOR_INITIAL_SUPERVISED_TRAINING: Strict rejection of circular satellite-derived stubble labels (ICAR-CREAMS/WorldCover). No non-satellite farm dispatch records available."
+    },
+    "INDUSTRIAL_FIRE": {
+      "tier_1": 0,
+      "tier_2": 0,
+      "total_usable": 0,
+      "excluded": 1,
+      "reason": "UNAVAILABLE_FOR_INITIAL_SUPERVISED_TRAINING: Zero verified PESO/CSB accidental explosion records. Off-zone 11.97 MW anomaly preserved as ambiguous exclusion."
+    },
+    "OTHER": {
+      "tier_1": 0,
+      "tier_2": 0,
+      "total_usable": 0,
+      "excluded": 109,
+      "reason": "110 unassociated regional observations preserved without fabricating synthetic labels."
+    }
+  },
+  "artifacts_and_checksums": {
+    "csv_file": "training_candidates_v1.csv",
+    "csv_sha256": "23ad61cb5c0bac771b96cb28c428ace26120ce9b1987f40acaf48c4cb580b2aa",
+    "csv_bytes": 108733,
+    "json_file": "training_candidates_v1.json",
+    "json_sha256": "3351ae1e76c59b5513f216baf0a4a08bc69a1f1cc51f8c06ea01a781dc7d26b7",
+    "json_bytes": 289462,
+    "audit_file": "label_audit_v1.json",
+    "audit_sha256": "3e5f0b51d3526664474ae0ca1bd9ce7781aff624499d81c594726d1c5ee1df6a"
+  }
+}

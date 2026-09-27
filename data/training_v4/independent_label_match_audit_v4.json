@@ -1,0 +1,277 @@
+{
+  "audit_version": "v4.0.0",
+  "audit_timestamp": "2026-09-10T18:03:33.820963+00:00",
+  "phase": "Phase 5E \u2014 Wildfire Event Diversity Expansion",
+  "total_observations_in_v4": 3770,
+  "usable_training_observations": {
+    "GAS_FLARE_Tier2": 155,
+    "WILDFIRE_CONFIRMED_Tier1": 2828,
+    "total_usable": 2983
+  },
+  "event_level_metrics": {
+    "GAS_FLARE_physical_event_groups": 105,
+    "WILDFIRE_physical_event_groups": 17,
+    "total_unique_physical_event_groups": 122,
+    "target_met_ge_15_wildfire_events": true
+  },
+  "wildfire_event_inventory": [
+    {
+      "id": "WF-WA-BOLT-CREEK",
+      "name": "Bolt Creek",
+      "state": "US-WA",
+      "season": "Fall",
+      "ecosystem": "Pacific Northwest Conifer Forest (Western Cascades)",
+      "fuel_model": "Heavy Timber / Closed Canopy Douglas-fir & Hemlock",
+      "date": "2022-09-11",
+      "matched_tier1": 587,
+      "weak_tier3": 6,
+      "unmatched_tier4": 23
+    },
+    {
+      "id": "WF-OR-CEDAR-CREEK",
+      "name": "Cedar Creek",
+      "state": "US-OR",
+      "season": "Summer/Fall",
+      "ecosystem": "Western Cascades Wilderness Conifer Forest",
+      "fuel_model": "Mature Conifer / Heavy Dead & Down Fuel",
+      "date": "2022-09-11",
+      "matched_tier1": 695,
+      "weak_tier3": 4,
+      "unmatched_tier4": 22
+    },
+    {
+      "id": "WF-WA-WHITNEY",
+      "name": "Whitney",
+      "state": "US-WA",
+      "season": "Fall",
+      "ecosystem": "Columbia Basin Shrub-Steppe / Dry Grassland",
+      "fuel_model": "Sagebrush / Fine Grass Fuels",
+      "date": "2020-09-08",
+      "matched_tier1": 459,
+      "weak_tier3": 4,
+      "unmatched_tier4": 20
+    },
+    {
+      "id": "WF-CA-RIVER",
+      "name": "River",
+      "state": "US-CA",
+      "season": "Summer",
+      "ecosystem": "California Central Coast Range / Coastal Foothills",
+      "fuel_model": "Chaparral / Coastal Live Oak / Dry Grass",
+      "date": "2020-08-18",
+      "matched_tier1": 79,
+      "weak_tier3": 0,
+      "unmatched_tier4": 14
+    },
+    {
+      "id": "WF-CA-COLD-SPRINGS",
+      "name": "W-5 Cold Springs",
+      "state": "US-CA",
+      "season": "Summer",
+      "ecosystem": "Modoc Plateau Great Basin Transition",
+      "fuel_model": "Sagebrush / Western Juniper / Dry Grass",
+      "date": "2020-08-20",
+      "matched_tier1": 25,
+      "weak_tier3": 0,
+      "unmatched_tier4": 3
+    },
+    {
+      "id": "WF-CA-SOUTHERN",
+      "name": "Southern",
+      "state": "US-CA",
+      "season": "Spring",
+      "ecosystem": "Southern California Montane / Chaparral",
+      "fuel_model": "Dense Chamise / Manzanita Chaparral",
+      "date": "2021-05-02",
+      "matched_tier1": 77,
+      "weak_tier3": 3,
+      "unmatched_tier4": 18
+    },
+    {
+      "id": "WF-CA-MCFARLAND",
+      "name": "McFarland",
+      "state": "US-CA",
+      "season": "Summer",
+      "ecosystem": "Northern California Klamath / Shasta-Trinity",
+      "fuel_model": "Mixed Conifer / Hardwood / Montane Shrub",
+      "date": "2021-08-05",
+      "matched_tier1": 230,
+      "weak_tier3": 0,
+      "unmatched_tier4": 11
+    },
+    {
+      "id": "WF-CA-ANTELOPE",
+      "name": "Antelope",
+      "state": "US-CA",
+      "season": "Summer",
+      "ecosystem": "Southern Cascades / Modoc Volcanic Plateau",
+      "fuel_model": "Ponderosa Pine / White Fir / Brush",
+      "date": "2021-08-06",
+      "matched_tier1": 33,
+      "weak_tier3": 22,
+      "unmatched_tier4": 428
+    },
+    {
+      "id": "WF-TX-CANADIAN-RIVER",
+      "name": "Canadian River Bottom",
+      "state": "US-TX",
+      "season": "Spring",
+      "ecosystem": "Southern Great Plains / Texas Panhandle",
+      "fuel_model": "Shortgrass Prairie / Riparian Saltcedar",
+      "date": "2022-03-30",
+      "matched_tier1": 10,
+      "weak_tier3": 0,
+      "unmatched_tier4": 2
+    },
+    {
+      "id": "WF-TX-KIDD",
+      "name": "Kidd",
+      "state": "US-TX",
+      "season": "Spring",
+      "ecosystem": "Texas Cross Timbers / Western Rolling Plains",
+      "fuel_model": "Mesquite / Juniper / Tallgrass",
+      "date": "2022-03-18",
+      "matched_tier1": 183,
+      "weak_tier3": 1,
+      "unmatched_tier4": 43
+    },
+    {
+      "id": "WF-TX-SMOKE-STACK",
+      "name": "Smoke Stack Lightning",
+      "state": "US-TX",
+      "season": "Spring",
+      "ecosystem": "Texas Rolling Plains Rangeland",
+      "fuel_model": "Dense Plains Rangeland Grass & Shrub",
+      "date": "2022-05-03",
+      "matched_tier1": 135,
+      "weak_tier3": 4,
+      "unmatched_tier4": 3
+    },
+    {
+      "id": "WF-NM-HERMITS-PEAK",
+      "name": "Hermits Peak",
+      "state": "US-NM",
+      "season": "Spring",
+      "ecosystem": "Southern Rocky Mountains / Sangre de Cristo",
+      "fuel_model": "Ponderosa Pine / Mixed Conifer / Aspen",
+      "date": "2022-04-10",
+      "matched_tier1": 13,
+      "weak_tier3": 1,
+      "unmatched_tier4": 0
+    },
+    {
+      "id": "WF-ID-WILDHORSE",
+      "name": "Wildhorse",
+      "state": "US-ID",
+      "season": "Fall",
+      "ecosystem": "Northern Rockies / Boise National Forest",
+      "fuel_model": "Douglas-fir / Ponderosa / Bitterbrush",
+      "date": "2022-09-05",
+      "matched_tier1": 38,
+      "weak_tier3": 0,
+      "unmatched_tier4": 0
+    },
+    {
+      "id": "WF-ID-TWO-AND-HALF",
+      "name": "Two and a Half",
+      "state": "US-ID",
+      "season": "Fall",
+      "ecosystem": "Snake River Plain Volcanic Shrub-Steppe",
+      "fuel_model": "Lava Field Sagebrush / Cheatgrass",
+      "date": "2022-09-09",
+      "matched_tier1": 111,
+      "weak_tier3": 6,
+      "unmatched_tier4": 0
+    },
+    {
+      "id": "WF-AZ-BOTTOM",
+      "name": "Bottom",
+      "state": "US-AZ",
+      "season": "Summer",
+      "ecosystem": "Arizona Mountain Basin / Desert Transition",
+      "fuel_model": "Pinyon-Juniper / Desert Scrub / Manzanita",
+      "date": "2021-06-29",
+      "matched_tier1": 50,
+      "weak_tier3": 0,
+      "unmatched_tier4": 5
+    },
+    {
+      "id": "WF-MT-GASS-FLATS",
+      "name": "Gass Flats",
+      "state": "US-MT",
+      "season": "Fall",
+      "ecosystem": "Northern Great Plains / Pine Breaks",
+      "fuel_model": "Ponderosa Pine Breaks / Prairie Grass",
+      "date": "2020-09-24",
+      "matched_tier1": 27,
+      "weak_tier3": 1,
+      "unmatched_tier4": 1
+    },
+    {
+      "id": "WF-CO-MARSHALL",
+      "name": "Marshall",
+      "state": "US-CO",
+      "season": "Winter",
+      "ecosystem": "Colorado Front Range Grassland / Suburban Interface",
+      "fuel_model": "Dormant Tallgrass / Cured Fine Fuels",
+      "date": "2021-12-30",
+      "matched_tier1": 76,
+      "weak_tier3": 1,
+      "unmatched_tier4": 2
+    }
+  ],
+  "geographic_diversity": {
+    "states_represented": [
+      "US-AZ",
+      "US-CA",
+      "US-CO",
+      "US-ID",
+      "US-MT",
+      "US-NM",
+      "US-OR",
+      "US-TX",
+      "US-WA"
+    ],
+    "total_states": 9
+  },
+  "seasonal_diversity": {
+    "Spring": 5,
+    "Summer": 6,
+    "Fall": 6,
+    "Winter": 1
+  },
+  "split_distribution_usable": {
+    "TRAIN": 1437,
+    "VALIDATION": 657,
+    "TEST": 889,
+    "EXCLUDED": 787
+  },
+  "leakage_policy": {
+    "strictly_prohibited_from_classifier_input": [
+      "latitude",
+      "longitude",
+      "geographic_region",
+      "facility_id",
+      "dist_to_facility",
+      "is_inside_facility",
+      "dist_to_observed_thermal_zone",
+      "external_source",
+      "external_record_id"
+    ],
+    "permitted_first_model_features": [
+      "frp",
+      "brightness_ti4",
+      "brightness_ti5",
+      "scan",
+      "track",
+      "day_night",
+      "satellite",
+      "confidence"
+    ]
+  },
+  "supervised_ml_readiness": {
+    "status": "DATASET CONSTRUCTED \u2014 EVENT DIVERSITY CRITERION MET (17 WILDFIRE COMPLEXES)",
+    "readiness_verdict": "READY FOR CONTROLLED EXPERIMENTAL SOURCE CLASSIFIER EVALUATION (PHASE 5F)",
+    "justification": "Corpus now contains 17 distinct physical wildfire events across 8 US states, 4 seasons, and diverse fuel regimes. Group-preserved event splits prevent observation leakage, and strict feature isolation eliminates geographic shortcut learning."
+  }
+}
